@@ -1,0 +1,31 @@
+{% extends "template.html" %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+    {% if incorrect %}
+        <h1>You were wrong! Try again.</h1>
+    {% else %}
+        <div>
+            <h3>Some Information</h3>
+            <ul>
+                <li>Your participant ID is {{ session['participantID'] }}.</li>
+                <li>You were assigned to condition {{ session['condition'] }}.</li>
+                <li>This is the value of <tt>example</tt>: {{ example }}</li>
+            </ul>
+        </div>
+    {% endif %}
+
+    <hr>
+
+    <form id="form" action="#" method="post">
+        <p><img src="{{ url_for('my_blueprint.static', filename='tux.png') }}"></p>
+
+        <p>
+            <label for="answer">This is the mascot for which operating system?</label>
+            <input type="text" id="answer" name="answer" required>
+        </p>
+
+        <input type="submit" name="submit" value="Submit Answer">
+    </form>
+{% endblock %}
