@@ -2,6 +2,7 @@ import datetime
 from flask import Blueprint, render_template
 from BOFS.util import *
 from BOFS.globals import db
+from BOFS.admin.util import verify_admin
 
 # The name of this variable must match the folder's name.
 my_blueprint = Blueprint('my_blueprint', __name__,
@@ -30,3 +31,16 @@ def task():
 
     return render_template("task.html", example="This is example text.", incorrect=incorrect)
 
+
+@my_blueprint.route("/analysis")
+@verify_admin
+def analysis():
+    results = db.session.query(
+            db.Participant.participantID,
+            db.func.count(db.MyTable.ID).label('tries')
+        ).\
+        join(db.MyTable, db.MyTable.participantID == db.Participant.participantID).\
+        filter(db.Participant.finished).\
+        group_by(db.MyTable.participantID)
+
+    return render_template("analysis.html", results=results)
