@@ -108,6 +108,11 @@
       "instructions": "big text field",
       "height": "100",
       "required": true
+    },
+    {
+      "questiontype": "textview",
+      "instructions": "You can put text here.",
+      "text": "And <pre>HTML</pre> is marked as safe, so you can add whatever you want here.<p>Like tux! <img src='/my_blueprint/tux.png'>"
     }
   ]
 }
