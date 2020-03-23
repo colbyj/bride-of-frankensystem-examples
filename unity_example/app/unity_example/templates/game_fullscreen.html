@@ -1,0 +1,15 @@
+{% extends "unity_webgl_fullscreen.html" %}
+
+{% set unityloader_path = url_for('unity_example.static', filename='UnityLoader.js') %}
+{% set json_path = url_for('unity_example.static', filename='unity_project.json') %}
+{% set width = 1120 %}
+{% set height = 700 %}
+
+{% block content_extra %}
+    <script type="text/javascript">
+    // This will only work if the game is fully loaded, so I've put it on a 5 second timer.
+    setTimeout(function() {
+        gameInstance.SendMessage('Canvas', 'SetParticipantID', {{ session['participantID'] }})
+    }, 5000);
+    </script>
+{% endblock %}
