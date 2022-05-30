@@ -77,13 +77,11 @@
         {
             "questiontype":"field",
             "instructions":"enter text",
-            "datatype":"text",
             "placeholder":"I am a placeholder",
             "id":"input_1"
         },
         {
             "questiontype": "num_field",
-            "datatype": "integer",
             "instructions": "enter a number",
             "id": "number_field"
         },
@@ -91,7 +89,6 @@
             "id": "dropdownexample",
             "questiontype":"drop_down",
             "instructions":"choose one",
-            "datatype":"text",
             "items":[
                 "apples",
                 "oranges",
@@ -101,7 +98,6 @@
         {
             "questiontype":"multi_field",
             "id":"big",
-            "datatype":"text",
             "placeholder":"I am holding the place",
             "instructions":"big text field",
             "height":"100"
