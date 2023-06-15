@@ -1,0 +1,19 @@
+{
+  "columns": {
+    "integer_column": {
+      "type": "integer",
+      "default": 0
+    },
+    "float_column": {
+      "type": "float",
+      "default": 0
+    },
+    "boolean_column": {
+      "type": "boolean",
+      "default": true
+    },
+    "string_column": {
+      "default": "this is a test"
+    }
+  }
+}

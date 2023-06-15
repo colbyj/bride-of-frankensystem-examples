@@ -18,7 +18,7 @@ def task():
     incorrect = None
 
     if request.method == 'POST':
-        log = db.MyTable()
+        log = db.answers()  # This database table was defined in /advanced_example/tables/answers.json
         log.participantID = session['participantID']
         log.answer = request.form['answer']
 
@@ -43,4 +43,4 @@ def analysis():
         filter(db.Participant.finished).\
         group_by(db.MyTable.participantID)
 
-    return render_template("analysis.html", results=results)
+    return render_template("templates/analysis.html", results=results)

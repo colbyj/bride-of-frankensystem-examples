@@ -18,3 +18,9 @@ For `advanced_example`, cd into the directory and run:
 
 ### Unity Example
 The `unity_example` is currently out of date.
+
+## Running in PyCharm
+
+Run BOFS as a module, set the working directory to the example project you're interested in, and specify the `.toml` file for that project.
+
+![Screenshot of PyCharm](pycharm_run.py)

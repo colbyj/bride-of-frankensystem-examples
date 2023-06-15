@@ -1,15 +1,15 @@
 # Database settings
-SQLALCHEMY_DATABASE_URI = 'sqlite:///minimal.db'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///advanced.db'
 
 # The secret key MUST be changed to something unique.
 # You should at the very least mash your keyboard a bit to generate a random string.
-SECRET_KEY = 'You Must Change This to Something Unique'
+SECRET_KEY = 'You Must Change This to Something Unique 2'
 
 # --------------------
 # Application Settings
 # --------------------
 APPLICATION_ROOT = ''       # Rarely adjusted, used to set the project to be accessible at a different URL rather than /.
-TITLE = 'Example Project'   # What users see at the top of the page
+TITLE = 'Advanced Example Project'   # What users see at the top of the page
 ADMIN_PASSWORD = 'example'  # Used to log in to the admin pages at /admin
 USE_BREADCRUMBS = false     # Show breadcrumbs-style progress bar
 PORT = 5001                 # Configure what port the project will be accessible at
@@ -41,9 +41,8 @@ COMPLETION_CODE_MESSAGE = 'Please copy and paste this code into the MTurk form:'
 PAGE_LIST = [
     {name='Consent', path='consent'},
     {name='External ID', path='external_id'},
-    {name='Questionnaire', path='questionnaire/example/first'},
-    {name='Questionnaire', path='questionnaire/example/second'},
+    {name='Task', path='task'},
+    {name='Questionnaire', path='questionnaire/grid'},
+    {name='Questionnaire', path='questionnaire/example'},
     {name='End', path='end'}
 ]
-
-#

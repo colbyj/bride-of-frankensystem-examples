@@ -1,0 +1,10 @@
+{
+  "columns": {
+    "answer": {}
+  },
+  "exports": [
+    {
+      "fields" : {"total_guesses": "count(answer)"}
+    }
+  ]
+}
