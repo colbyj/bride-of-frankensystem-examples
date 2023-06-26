@@ -15,6 +15,8 @@ For `minimal_example`, cd into the directory and run:
 The advanced example is a project that demonstrates most of the capabilities of Bride of Frankensystem.
 
 For `advanced_example`, cd into the directory and run:
+ - `BOFS advanced.toml -d` for the debug version (for development).
+ - `BOFS advanced.toml` for the production version.
 
 ### Unity Example
 The `unity_example` is currently out of date.

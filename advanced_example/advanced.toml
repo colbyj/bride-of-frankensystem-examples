@@ -16,7 +16,7 @@ PORT = 5001                 # Configure what port the project will be accessible
 RETRIEVE_SESSIONS = true    # If ID entered at /external_id was already used, then attempt to load a participant's progress from the database and redirect them to where they last were.
 ALLOW_RETAKES = true        # With the external_id page in use, setting this to true will prevent the same ID from being used twice.
 LOG_GRID_CLICKS = false     # Used for more fine-grained logging of participant's progress through questionnaires. Log the time the each radio button in a radio grid is clicked.
-CONDITIONS = []             # Leave blank for only 1 condition. Format for multiple conditions is shown below
+CONDITIONS = [{label='example_questionnaire'}, {label='no_example_questionnaire'}]             # Leave blank for only 1 condition. Format for multiple conditions is shown below
 #CONDITIONS = [{label='condition 1', enabled=true}, {label='condition 2', enabled=true}]
 
 # External ID Settings, adjust these to adjust the phrasing on /external_id for Prolific, MTurk, etc.
@@ -41,8 +41,14 @@ COMPLETION_CODE_MESSAGE = 'Please copy and paste this code into the MTurk form:'
 PAGE_LIST = [
     {name='Consent', path='consent'},
     {name='External ID', path='external_id'},
+    {name='Instructions', path='instructions/example_instructions'},
     {name='Task', path='task'},
     {name='Questionnaire', path='questionnaire/grid'},
-    {name='Questionnaire', path='questionnaire/example'},
+    {conditional_routing=[
+        {condition=1, page_list=[  # Page list for label='example_questionnaire'
+            {name='Questionnaire', path='questionnaire/example'}  # the format for the list is the same as for the parent PAGE_LIST
+        ]},
+        {condition=2, page_list=[]}  # Page list for label='no_example_questionnaire'. Page list is an empty list, so they so don't see any extra questionnaires.
+    ]},
     {name='End', path='end'}
 ]
