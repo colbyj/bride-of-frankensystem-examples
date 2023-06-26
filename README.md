@@ -25,4 +25,4 @@ The `unity_example` is currently out of date.
 
 Run BOFS as a module, set the working directory to the example project you're interested in, and specify the `.toml` file for that project.
 
-![Screenshot of PyCharm](pycharm_run.py)
+![Screenshot of PyCharm](pycharm_run.png)
