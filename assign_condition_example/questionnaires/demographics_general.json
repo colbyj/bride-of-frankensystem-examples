@@ -1,0 +1,18 @@
+{
+  "title":"Demographics",
+  "instructions":"Please answer the following questions.",
+  "code":"",
+  "questions":[
+    {
+      "questiontype": "drop_down",
+      "instructions": "Are you using a mouse or a trackpad?",
+      "id": "device",
+      "dropheight": 78,
+      "items": [
+        "Mouse",
+        "Trackpad",
+        "Other"
+      ]
+    }
+  ]
+}
