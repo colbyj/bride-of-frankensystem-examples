@@ -44,12 +44,12 @@ PAGE_LIST = [
     {name='Instructions', path='instructions/example_instructions'},
     {name='Task', path='task'},
     {name='Questionnaire', path='questionnaire/grid'},
-    {conditional_routing=[
-        {condition=1, page_list=[  # Page list for label='example_questionnaire'
-            {name='Questionnaire', path='questionnaire/example'}  # the format for the list is the same as for the parent PAGE_LIST
-        ]},
-        {condition=2, page_list=[]}  # Page list for label='no_example_questionnaire'. Page list is an empty list, so they so don't see any extra questionnaires.
-    ]},
+    #{conditional_routing=[
+    #    {condition=1, page_list=[  # Page list for label='example_questionnaire'
+    #        {name='Questionnaire', path='questionnaire/example'}  # the format for the list is the same as for the parent PAGE_LIST
+    #    ]},
+    #    {condition=2, page_list=[]}  # Page list for label='no_example_questionnaire'. Page list is an empty list, so they so don't see any extra questionnaires.
+    #]},
     {name='Questionnaire', path='questionnaire/variables'},
     {name='End', path='end'}
 ]
