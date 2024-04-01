@@ -1,0 +1,16 @@
+{
+  "columns": {
+    "score": {
+      "type": "integer",
+      "default": 0
+    }
+  },
+  "exports": [
+    {
+      "fields": {
+        "average_score": "avg(score)",
+        "high_score": "max(score)"
+      }
+    }
+  ]
+}
