@@ -13,7 +13,6 @@ function mousePressed() {
     score += 1;
 }
 
-
 // Send our score after 5000 seconds
 setTimeout(function () {
     let dataToSend = {
