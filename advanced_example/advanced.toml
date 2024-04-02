@@ -41,6 +41,7 @@ COMPLETION_CODE_MESSAGE = 'Please copy and paste this code into the MTurk form:'
 PAGE_LIST = [
     {name='Consent', path='consent'},
     {name='External ID', path='external_id'},
+    {name='Questionnaire', path='questionnaire/example'},
     {name='Instructions', path='instructions/example_instructions'},
     {name='Task', path='task'},
     {name='Questionnaire', path='questionnaire/grid'},

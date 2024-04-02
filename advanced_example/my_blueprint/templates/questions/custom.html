@@ -1,0 +1,17 @@
+{% set default_field_width = 400 %}
+
+<p>hey there, it's testing time.</p>
+<p>Your condition is: {{ session['condition'] }}</p>
+<p>You chose "{{ participant.questionnaire("example").radiolist_1 }}" for radiolist_1 on the example questionnaire.</p>
+
+Do you still agree with this?
+
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="{{ question.id }}" id="{{ question.id }}_no" value="No">
+    <label class="form-check-label" for="{{ question.id }}_no">No</label>
+</div>
+
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="{{ question.id }}" id="{{ question.id }}_yes" value="Yes">
+    <label class="form-check-label" for="{{ question.id }}_yes">Yes</label>
+</div>
