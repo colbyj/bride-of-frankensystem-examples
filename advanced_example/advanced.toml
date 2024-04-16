@@ -26,8 +26,8 @@ EXTERNAL_ID_PROMPT = "Please enter your MTurk Worker ID. You can find this on yo
 # ------------------------------
 # Completion Codes and end route
 # ------------------------------
-#STATIC_COMPLETION_CODE = ''        # Set this if you want all participants to be given the same completion code at the end of the survey.
-GENERATE_COMPLETION_CODE = true     # Generate a random completion code for the user.
+STATIC_COMPLETION_CODE = 'Your Completion Code'        # Set this if you want all participants to be given the same completion code at the end of the survey.
+GENERATE_COMPLETION_CODE = false     # Generate a random completion code for the user.
 COMPLETION_CODE_MESSAGE = 'Please copy and paste this code into the MTurk form:'
 # OUTGOING_URL = ''                 # On the /end route, participants can be optionally redirected to an external page instead of being given a code
 

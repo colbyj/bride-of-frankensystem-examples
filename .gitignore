@@ -10,3 +10,7 @@
 /unity_example/unity_project/*.sln
 /unity_example/unity_project/[Aa]ssets/**/*.meta
 /unity_example/app/unity_example/build/
+BOF_FeedbackHexagon/
+face-similarity/
+dev_project/
+*/error.log
