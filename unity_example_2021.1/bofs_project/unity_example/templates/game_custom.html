@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | unity_project</title>
+</head>
+<body style="text-align: center">
+<canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
+<script src="unity_example/unity_example.loader.js"></script>
+<script>
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+    }
+
+    var gameInstance = null;
+    createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "unity_example/unity_example.data.gz",
+        frameworkUrl: "unity_example/unity_example.framework.js.gz",
+        codeUrl: "unity_example/unity_example.wasm.gz",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "unity_project",
+        productVersion: "0.1",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+    }).then((instance) => { gameInstance = instance });
+    // Note that builds compressed with Brotli require HTTPS. This example uses gzip.
+</script>
+
+<script type="text/javascript">
+    // This will only work if the game is fully loaded, so I've put it on a 5 second timer.
+    // You can check whether gameInstance is null to determine if it is loaded.
+    setTimeout(function() {
+        if (gameInstance == null)
+            return;
+        gameInstance.SendMessage('Canvas', 'SetParticipantID', {{ session['participantID'] }})
+    }, 5000);
+</script>
+</body>
+</html>

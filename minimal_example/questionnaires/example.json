@@ -71,8 +71,7 @@
             "id":"slider_1",
             "left":"left",
             "right":"right",
-            "tick_count":5,
-            "width":500
+            "tick_count":5
         },
         {
             "questiontype":"field",

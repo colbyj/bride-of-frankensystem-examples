@@ -1,0 +1,29 @@
+{% extends "unity_webgl.html" %}
+
+{% set unityloader_path = "unity_example/unity_example.loader.js" %}
+{% set unity_parameters = {
+        "dataUrl": "unity_example/unity_example.data.gz",
+        "frameworkUrl": "unity_example/unity_example.framework.js.gz",
+        "codeUrl": "unity_example/unity_example.wasm.gz",
+        "streamingAssetsUrl": "StreamingAssets",
+        "companyName": "DefaultCompany",
+        "productName": "test",
+        "productVersion": "1.0"
+      } %}
+
+{# Note that builds compressed with Brotli require HTTPS. This example uses gzip. #}
+
+{% set width = 1120 %}
+{% set height = 700 %}
+
+{% block content_extra %}
+    <script type="text/javascript">
+        // This will only work if the game is fully loaded, so I've put it on a 5 second timer.
+        // You can check whether gameInstance is null to determine if it is loaded.
+        setTimeout(function() {
+            if (gameInstance == null)
+                return;
+            gameInstance.SendMessage('Canvas', 'SetParticipantID', {{ session['participantID'] }})
+        }, 5000);
+    </script>
+{% endblock %}
