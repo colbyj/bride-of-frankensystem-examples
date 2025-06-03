@@ -20,7 +20,7 @@ CONDITIONS = []                # Leave blank for only 1 condition. Format for mu
 #CONDITIONS = [{label='condition 1', enabled=true}, {label='condition 2', enabled=true}]
 
 # External ID Settings, adjust these to adjust the phrasing on /external_id for Prolific, MTurk, etc.
-EXTERNAL_ID_LABEL = "Your ID"
+EXTERNAL_ID_LABEL = "ID (type in some nonsense)"
 EXTERNAL_ID_PROMPT = "Please enter your provided ID (type in some nonsense)."
 
 # ------------------------------
