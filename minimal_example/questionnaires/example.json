@@ -1,6 +1,6 @@
 {
     "title":"Example Questionnaire",
-    "instructions":"Please rate each video game experience....",
+    "instructions":"Please answer each question.",
     "code":"",
     "questions":[
         {
@@ -10,7 +10,7 @@
         },
         {
             "questiontype":"radiogrid",
-            "instructions":"choose option...",
+            "instructions":"Choose an option...",
             "id":"radio_1",
             "shuffle":"true",
             "labels":[
@@ -37,7 +37,7 @@
         },
         {
             "questiontype":"radiolist",
-            "instructions":"choose one option...",
+            "instructions":"Choose one option.",
             "id":"radiolist_1",
             "labels":[
                 "Yes",
@@ -47,7 +47,7 @@
         },
         {
             "questiontype":"checklist",
-            "instructions":"choose any options...",
+            "instructions":"Choose any options that apply.",
             "id":"checklist_1",
             "shuffle":true,
             "questions":[
@@ -75,19 +75,19 @@
         },
         {
             "questiontype":"field",
-            "instructions":"enter text",
-            "placeholder":"I am a placeholder",
+            "instructions":"Enter some text.",
+            "placeholder":"I am a placeholder. Enter some text.",
             "id":"input_1"
         },
         {
             "questiontype": "num_field",
-            "instructions": "enter a number",
+            "instructions": "Enter a number.",
             "id": "number_field"
         },
         {
             "id": "dropdownexample",
             "questiontype":"drop_down",
-            "instructions":"choose one",
+            "instructions":"Choose one from the list.",
             "items":[
                 "apples",
                 "oranges",
@@ -97,8 +97,8 @@
         {
             "questiontype":"multi_field",
             "id":"big",
-            "placeholder":"I am holding the place",
-            "instructions":"big text field",
+            "placeholder":"I am a placeholder.",
+            "instructions":"Enter a lot of text. Enter some text.",
             "height":"100"
         }
     ]
