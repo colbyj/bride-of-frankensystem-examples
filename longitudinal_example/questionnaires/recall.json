@@ -1,0 +1,33 @@
+{
+    "title": "Self-Report",
+    "instructions": "A few questions about today's recall test.",
+    "code": "",
+    "questions": [
+        {
+            "questiontype": "slider",
+            "instructions": "How confident are you in the selections you just made?",
+            "id": "recall_confidence",
+            "left": "Not at all confident",
+            "right": "Completely confident",
+            "tick_count": 7
+        },
+        {
+            "questiontype": "radiolist",
+            "instructions": "Did you practise yesterday's commands at any point between the two sessions?",
+            "id": "practised_between",
+            "labels": [
+                "No, not at all",
+                "Briefly thought about them",
+                "Practised once or twice",
+                "Practised several times"
+            ]
+        },
+        {
+            "questiontype": "multi_field",
+            "instructions": "Anything else you'd like to share about how you remembered the commands? (Optional)",
+            "id": "strategy_notes",
+            "placeholder": "e.g., I tried to associate each command with a position...",
+            "height": "100"
+        }
+    ]
+}

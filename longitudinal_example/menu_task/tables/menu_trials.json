@@ -1,0 +1,50 @@
+{
+  "columns": {
+    "phase": {
+      "default": "learning"
+    },
+    "technique": {
+      "default": "linear"
+    },
+    "trial_index": {
+      "type": "integer",
+      "default": 0
+    },
+    "prompted_command": {
+      "default": ""
+    },
+    "selected_command": {
+      "default": ""
+    },
+    "correct": {
+      "type": "boolean",
+      "default": false
+    },
+    "response_time_ms": {
+      "type": "integer",
+      "default": 0
+    },
+    "trajectory": {
+      "type": "json"
+    }
+  },
+  "exports": [
+    {
+      "filter": "phase = 'learning'",
+      "fields": {
+        "learning_trials_completed": "count(trial_index)",
+        "learning_accuracy": "avg(correct)",
+        "learning_avg_response_ms": "avg(response_time_ms)"
+      }
+    },
+    {
+      "filter": "phase = 'recall'",
+      "fields": {
+        "recall_trials_completed": "count(trial_index)",
+        "recall_correct_count": "sum(correct)",
+        "recall_accuracy": "avg(correct)",
+        "recall_avg_response_ms": "avg(response_time_ms)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+/* Shared styling for the menu-learning task pages. */
+
+.task-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+    user-select: none;
+}
+
+.task-progress {
+    font-size: 0.95em;
+    color: #666;
+}
+
+.task-prompt {
+    font-size: 1.4em;
+    min-height: 1.6em;
+}
+
+.feedback {
+    min-height: 1.4em;
+    font-size: 1.05em;
+}
+.feedback-correct   { color: #1f7a1f; }
+.feedback-incorrect { color: #b13030; }
+
+#menu-mount {
+    position: relative;
+    min-height: 380px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.task-continue {
+    display: none;
+    margin-top: 12px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* ---------------- Linear menu ---------------- */
+
+.linear-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.menu-trigger {
+    padding: 6px 14px;
+    font-size: 1em;
+    cursor: pointer;
+    border: 1px solid #888;
+    background: #f4f4f4;
+    border-radius: 3px;
+}
+.menu-trigger:disabled { cursor: default; opacity: 0.5; }
+
+.menu-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 2px;
+    min-width: 160px;
+    border: 1px solid #888;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.menu-item {
+    padding: 8px 14px;
+    cursor: pointer;
+}
+.menu-item:hover { background: #e8f0ff; }
+
+.menu-item-highlighted {
+    background: #fff4ce;
+    outline: 2px solid #d6b656;
+    outline-offset: -2px;
+}
+
+/* ---------------- Marking menu ---------------- */
+
+.marking-menu-svg {
+    display: block;
+    overflow: visible;
+}
+
+.marking-menu-handle {
+    fill: #f4f4f4;
+    stroke: #555;
+    stroke-width: 2;
+    cursor: pointer;
+}
+.marking-menu-handle.disabled { fill: #eaeaea; stroke: #aaa; cursor: default; }
+.marking-menu-handle-active   { fill: #cce4ff; }
+
+.marking-menu-handle-label {
+    font-size: 14px;
+    fill: #333;
+    pointer-events: none;
+}
+.marking-menu-handle-label.disabled { fill: #999; }
+
+.marking-menu-wedge {
+    fill: #f7f7f7;
+    stroke: #555;
+    stroke-width: 1;
+}
+.marking-menu-wedge-hover { fill: #cce4ff; }
+.marking-menu-wedge-highlighted {
+    fill: #fff4ce;
+    stroke: #d6b656;
+    stroke-width: 2;
+}
+
+.marking-menu-label {
+    font-size: 13px;
+    fill: #222;
+    pointer-events: none;
+}

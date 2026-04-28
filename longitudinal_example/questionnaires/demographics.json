@@ -1,0 +1,48 @@
+{
+    "title": "Background",
+    "instructions": "A few questions before you start.",
+    "code": "",
+    "questions": [
+        {
+            "questiontype": "num_field",
+            "instructions": "What is your age (in years)?",
+            "id": "age"
+        },
+        {
+            "id": "gender",
+            "questiontype": "drop_down",
+            "instructions": "What is your gender?",
+            "items": [
+                "Woman",
+                "Man",
+                "Non-binary",
+                "Prefer to self-describe",
+                "Prefer not to say"
+            ]
+        },
+        {
+            "questiontype": "radiolist",
+            "instructions": "How often do you use desktop or laptop computers?",
+            "id": "computer_use",
+            "labels": [
+                "Rarely",
+                "A few times a month",
+                "Weekly",
+                "Most days",
+                "Every day"
+            ]
+        },
+        {
+            "questiontype": "radiolist",
+            "instructions": "How often do you use keyboard shortcuts to invoke commands (e.g., Ctrl+C, Cmd+S)?",
+            "id": "shortcut_use",
+            "labels": [
+                "Never",
+                "Rarely",
+                "Sometimes",
+                "Often",
+                "Always when possible"
+            ]
+        }
+    ]
+}

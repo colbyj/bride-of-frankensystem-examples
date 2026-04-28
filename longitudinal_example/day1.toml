@@ -1,0 +1,68 @@
+# =============================================================================
+# Longitudinal Example — Day 1 (Learning Phase)
+# =============================================================================
+# Day 1 of a two-day study. Each participant is assigned to one of two menu
+# techniques and completes 12 practice trials with that interface.
+#
+# Day 1's data lives in `longitudinal_day1.db`. Day 2 reads that database
+# via CONDITIONS_FROM_DB to put each returning participant back into the
+# same condition.
+#
+# See the README for the full walkthrough.
+# =============================================================================
+
+SQLALCHEMY_DATABASE_URI = 'sqlite:///longitudinal_day1.db'
+
+# --------------------
+# Application Settings
+# --------------------
+TITLE = 'Menu Learning Study - Day 1'
+ADMIN_PASSWORD = 'example'
+USE_BREADCRUMBS = true
+PORT = 5003
+RETRIEVE_SESSIONS = true     # Resume in-progress sessions if the same ID returns.
+ALLOW_RETAKES = false        # Prevent the same Participant ID from completing twice.
+
+# Two conditions, balanced randomly across participants. Day 2's CONDITIONS
+# list must declare these in the same order — the lookup is by integer
+# position.
+CONDITIONS = [
+    {label='Linear Menu', enabled=true},
+    {label='Marking Menu', enabled=true},
+]
+
+# Generic external ID. Replace with whatever your recruitment platform uses
+# (Prolific ID, MTurk Worker ID, etc.) when you adapt this example.
+EXTERNAL_ID_LABEL = "Participant ID"
+EXTERNAL_ID_PROMPT = "Please enter your Participant ID now. You will need to enter the same ID when you return for day 2."
+
+GENERATE_COMPLETION_CODE = false
+STATIC_COMPLETION_CODE = 'DAY1DONE'
+COMPLETION_CODE_MESSAGE = 'Thank you. Your day-1 completion code is:'
+
+# ---------
+# Page List
+# ---------
+# /consent runs condition assignment at submission time, randomizing each
+# participant before /external_id is reached. The Participant ID captured on
+# the next page is stored on that same participant row, which is what day 2
+# uses to look the condition back up.
+#
+# After demographics, conditional_routing sends each participant to the
+# learning task that matches their assigned technique.
+PAGE_LIST = [
+    {name='Consent', path='consent'},
+    {name='Participant ID', path='external_id'},
+    {name='Background', path='questionnaire/demographics'},
+    {conditional_routing=[
+        {condition=1, page_list=[
+            {name='Instructions', path='instructions/learn_linear'},
+            {name='Practice', path='learn_linear'},
+        ]},
+        {condition=2, page_list=[
+            {name='Instructions', path='instructions/learn_marking'},
+            {name='Practice', path='learn_marking'},
+        ]},
+    ]},
+    {name='End', path='end'},
+]

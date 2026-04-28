@@ -1,5 +1,7 @@
 *.db
 *.pyc
+__pycache__/
+*.zip
 /.idea
 /unity_example_2021.1/unity_project/[Ll]ibrary
 /unity_example_2021.1/unity_project/[Ll]ogs
@@ -24,3 +26,4 @@ face-similarity/
 dev_project/
 */error.log
 checkpoints/
+*/cached_results.json

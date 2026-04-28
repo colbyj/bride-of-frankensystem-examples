@@ -1,0 +1,79 @@
+# =============================================================================
+# Longitudinal Example — Day 2 (Recall Phase)
+# =============================================================================
+# Day 2 of a two-day study. Participants who completed day 1 return, enter
+# the same Participant ID, and are placed back into their day-1 condition
+# via CONDITIONS_FROM_DB. The conditional_routing reminder pages are
+# rendered per condition (so the participant sees "you used the linear menu"
+# or "you used the marking menu"), then everyone fills out the same
+# self-report questionnaire at the end.
+#
+# Run day 1 first and complete a participant or two; otherwise day 2's
+# lookup against `longitudinal_day1.db` will fail at startup.
+# =============================================================================
+
+SQLALCHEMY_DATABASE_URI = 'sqlite:///longitudinal_day2.db'
+
+# Each Participant ID submitted on day 2 is looked up in day 1's database,
+# and the condition that was assigned there is reused.
+CONDITIONS_FROM_DB = 'sqlite:///longitudinal_day1.db'
+
+# Alternative: pre-decide assignments in a CSV instead of (or in addition
+# to) the DB. If both are set, CSV wins on hits and DB is the fallback.
+# See `conditions.csv` in this folder for a sample file.
+#CONDITIONS_FROM_CSV = 'conditions.csv'
+
+# --------------------
+# Application Settings
+# --------------------
+TITLE = 'Menu Learning Study - Day 2'
+ADMIN_PASSWORD = 'example'
+USE_BREADCRUMBS = true
+PORT = 5004
+RETRIEVE_SESSIONS = true
+ALLOW_RETAKES = false
+
+# Conditions must match day 1's, in the same order, so the integers line up.
+CONDITIONS = [
+    {label='Linear Menu', enabled=true},
+    {label='Marking Menu', enabled=true},
+]
+
+EXTERNAL_ID_LABEL = "Participant ID"
+EXTERNAL_ID_PROMPT = "Please enter the same Participant ID you used on day 1."
+
+GENERATE_COMPLETION_CODE = false
+STATIC_COMPLETION_CODE = 'DAY2DONE'
+COMPLETION_CODE_MESSAGE = 'Thank you. Your final completion code is:'
+
+# ---------
+# Page List
+# ---------
+# Two things are different from a single-day study, both required so the
+# CONDITIONS_FROM_DB lookup actually fires:
+#
+# 1. consent_nc instead of consent — plain consent runs condition
+#    assignment at submission time, which would burn a random condition
+#    before the Participant ID has been collected.
+# 2. external_id is placed *before* assign_condition, so the lookup has
+#    something to match on.
+#
+# A participant who enters an ID that day 1's database has never seen will
+# be shown an "ID Not Recognized" page and cannot proceed.
+PAGE_LIST = [
+    {name='Consent', path='consent_nc'},
+    {name='Participant ID', path='external_id'},
+    {name='', path='assign_condition'},
+    {conditional_routing=[
+        {condition=1, page_list=[
+            {name='Reminder', path='instructions/recall_linear'},
+            {name='Recall Test', path='recall_linear'},
+        ]},
+        {condition=2, page_list=[
+            {name='Reminder', path='instructions/recall_marking'},
+            {name='Recall Test', path='recall_marking'},
+        ]},
+    ]},
+    {name='Self-Report', path='questionnaire/recall'},
+    {name='End', path='end'},
+]

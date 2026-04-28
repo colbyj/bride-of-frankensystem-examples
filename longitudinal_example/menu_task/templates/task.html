@@ -1,0 +1,38 @@
+{% extends "template.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('menu_task.static', filename='menu_task.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="task-stage">
+    <div class="task-progress" id="progress"></div>
+    <div class="task-prompt" id="prompt"></div>
+    <div id="menu-mount"></div>
+    <div class="feedback" id="feedback"></div>
+    <button id="continue-btn" class="task-continue" type="button">Continue</button>
+</div>
+
+<script src="{{ url_for('menu_task.static', filename='d3.v7.min.js') }}"></script>
+{% if technique == 'linear' %}
+<script src="{{ url_for('menu_task.static', filename='linear_menu.js') }}"></script>
+{% else %}
+<script src="{{ url_for('menu_task.static', filename='marking_menu.js') }}"></script>
+{% endif %}
+<script src="{{ url_for('menu_task.static', filename='task_runner.js') }}"></script>
+<script>
+(function () {
+    MenuTaskRunner.start({
+        phase: {{ phase|tojson }},
+        technique: {{ technique|tojson }},
+        commands: {{ commands|tojson }},
+        trialCount: {{ trial_count|tojson }},
+        mountSelector: '#menu-mount',
+        promptSelector: '#prompt',
+        feedbackSelector: '#feedback',
+        progressSelector: '#progress',
+        continueSelector: '#continue-btn',
+    });
+})();
+</script>
+{% endblock %}
