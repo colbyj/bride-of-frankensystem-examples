@@ -1,118 +1,118 @@
 {
-  "title": "Example Questionnaire",
-  "instructions": "Please rate each video game experience....",
-  "code": "",
-  "questions": [
-    {
-      "questiontype": "textview",
-      "title": "I am a title",
-      "text": "This allows you to display descriptive or informative text."
-    },
-    {
-      "questiontype": "radiogrid",
-      "instructions": "choose option...",
-      "id": "radio_1",
-      "shuffle": true,
-      "required": true,
-      "labels": [
-        "I hate it!",
-        "",
-        "Neutral",
-        "",
-        "I love it!"
-      ],
-      "q_text": [
+    "title": "Example Questionnaire",
+    "instructions": "Please answer each question below.",
+    "code": "",
+    "questions": [
         {
-          "id": "q_1",
-          "text": "dfdjs;aljd"
+            "questiontype": "textview",
+            "title": "Section title",
+            "text": "Use a textview to display descriptive or informative text between questions."
         },
         {
-          "id": "q_2",
-          "text": "hahahahaha"
+            "questiontype": "radiogrid",
+            "instructions": "Rate how much you agree with each statement.",
+            "id": "radio_1",
+            "shuffle": true,
+            "required": true,
+            "labels": [
+                "I hate it!",
+                "",
+                "Neutral",
+                "",
+                "I love it!"
+            ],
+            "q_text": [
+                {
+                    "id": "q_1",
+                    "text": "The instructions for this study were clear."
+                },
+                {
+                    "id": "q_2",
+                    "text": "I felt comfortable with the pace of the questions."
+                },
+                {
+                    "id": "q_3",
+                    "text": "I would be happy to take part in another study like this."
+                }
+            ]
         },
         {
-          "id": "q_3",
-          "text": "muahahahaha"
+            "questiontype": "radiolist",
+            "instructions": "Choose one option.",
+            "id": "radiolist_1",
+            "required": true,
+            "labels": [
+                "Yes",
+                "Maybe",
+                "No"
+            ]
+        },
+        {
+            "questiontype": "checklist",
+            "instructions": "Choose any options that apply.",
+            "id": "checklist_1",
+            "shuffle": true,
+            "horizontal": true,
+            "questions": [
+                {
+                    "id": "cl_1",
+                    "text": "Option 1"
+                },
+                {
+                    "id": "cl_2",
+                    "text": "Option 2"
+                },
+                {
+                    "id": "cl_3",
+                    "text": "Option 3"
+                }
+            ]
+        },
+        {
+            "questiontype": "slider",
+            "instructions": "Drag the slider to indicate your response.",
+            "id": "slider_1",
+            "left": "left label",
+            "right": "right label",
+            "tick_count": 5,
+            "width": 500
+        },
+        {
+            "questiontype": "field",
+            "instructions": "Enter some text.",
+            "placeholder": "Type your answer here",
+            "id": "input_1",
+            "required": true
+        },
+        {
+            "questiontype": "num_field",
+            "instructions": "Enter a number.",
+            "id": "number_field",
+            "required": true
+        },
+        {
+            "id": "dropdownexample",
+            "questiontype": "drop_down",
+            "instructions": "Choose one item from the list.",
+            "items": [
+                "apples",
+                "oranges",
+                "watermelon"
+            ],
+            "required": true
+        },
+        {
+            "questiontype": "multi_field",
+            "id": "big",
+            "placeholder": "Type your answer here",
+            "instructions": "Enter a longer response.",
+            "height": "100",
+            "required": true
+        },
+        {
+            "questiontype": "textview",
+            "instructions": "",
+            "text": "A textview's text is rendered as HTML, so you can embed images, links, or other markup. <p>For example, here is the static asset served by <code>my_blueprint</code>:<br><img src='/my_blueprint/tux.png'>"
         }
-      ]
-    },
-    {
-      "questiontype": "radiolist",
-      "instructions": "choose one option...",
-      "id": "radiolist_1",
-      "required": true,
-      "labels": [
-        "Yes",
-        "Maybe",
-        "No"
-      ]
-    },
-    {
-      "questiontype": "checklist",
-      "instructions": "choose any options...",
-      "id": "checklist_1",
-      "shuffle": true,
-      "horizontal": true,
-      "questions": [
-        {
-          "id": "cl_1",
-          "text": "Option 1"
-        },
-        {
-          "id": "cl_2",
-          "text": "Option 2"
-        },
-        {
-          "id": "cl_3",
-          "text": "Option 3"
-        }
-      ]
-    },
-    {
-      "questiontype": "slider",
-      "instructions": "I am a slider",
-      "id": "slider_1",
-      "left": "left label",
-      "right": "right label",
-      "tick_count": 5,
-      "width": 500
-    },
-    {
-      "questiontype": "field",
-      "instructions": "enter text",
-      "placeholder": "I am a placeholder",
-      "id": "input_1",
-      "required": true
-    },
-    {
-      "questiontype": "num_field",
-      "instructions": "enter a number",
-      "id": "number_field",
-      "required": true
-    },
-    {
-      "id": "dropdownexample",
-      "questiontype": "drop_down",
-      "instructions": "choose one",
-      "items": [
-        "apples",
-        "oranges",
-        "watermelon"
-      ],
-      "required": true
-    },
-    {
-      "questiontype": "multi_field",
-      "id": "big",
-      "placeholder": "I am holding the place",
-      "instructions": "big text field",
-      "height": "100",
-      "required": true
-    },
-    {
-      "questiontype": "textview",
-      "instructions": "You can put text here.",
-      "text": "And <pre>HTML</pre> is marked as safe, so you can add whatever you want here.<p>Like tux! <img src='/my_blueprint/tux.png'>"
-    }
-  ]
+    ]
 }

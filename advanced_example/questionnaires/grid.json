@@ -1,38 +1,38 @@
 {
-    "title":"Example Questionnaire 2",
-    "instructions":"",
-    "code":"",
-    "questions":[
+    "title": "Post-Task Reflection",
+    "instructions": "",
+    "code": "",
+    "questions": [
         {
-            "questiontype":"radiogrid",
-            "instructions":"Rate your agreement",
-            "id":"radio_1",
-            "shuffle":"true",
-            "labels":[
+            "questiontype": "radiogrid",
+            "instructions": "Rate your agreement with each statement about the task you just completed.",
+            "id": "radio_1",
+            "shuffle": "true",
+            "labels": [
                 "Strongly disagree",
                 "",
                 "Neutral",
                 "",
                 "Strongly agree"
             ],
-            "q_text":[
+            "q_text": [
                 {
-                    "id":"q1",
-                    "text":"This example is fantastic"
+                    "id": "q1",
+                    "text": "The task was easy to understand."
                 },
                 {
-                    "id":"q2",
-                    "text":"This example could be improved"
+                    "id": "q2",
+                    "text": "I needed more information than was provided."
                 },
                 {
-                    "id":"q3",
-                    "text":"This example is the highlight of my day"
+                    "id": "q3",
+                    "text": "I felt confident in my answer."
                 }
             ]
         }
     ],
-  "participant_calculations": {
-    "ExampleQualityMean": "mean([q1, 6-q2 , q3])",
-    "ExampleQualitySum": "q1 + 6-q2 + q3"
-  }
+    "participant_calculations": {
+        "ExampleQualityMean": "mean([q1, 6-q2 , q3])",
+        "ExampleQualitySum": "q1 + 6-q2 + q3"
+    }
 }

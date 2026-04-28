@@ -1,17 +1,17 @@
 {
-  "title": "Example Questionnaire",
-  "instructions": "",
-  "code": "",
-  "questions": [
-    {
-      "questiontype": "textview",
-      "title": "I am a title",
-      "text": "This example demonstrates a custom question type that makes use of variables."
-    },
-    {
-      "questiontype": "custom",
-      "instructions": "I am special",
-      "id": "special"
-    }
-  ]
+    "title": "Follow-up",
+    "instructions": "",
+    "code": "",
+    "questions": [
+        {
+            "questiontype": "textview",
+            "title": "A custom question type",
+            "text": "The next question is rendered by a custom template (defined in <code>my_blueprint/templates/questions/custom.html</code>) and references your earlier answer."
+        },
+        {
+            "questiontype": "custom",
+            "instructions": "Please confirm your earlier response.",
+            "id": "special"
+        }
+    ]
 }

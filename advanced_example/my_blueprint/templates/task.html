@@ -4,16 +4,9 @@
 
 {% block content %}
     {% if incorrect %}
-        <h1>You were wrong! Try again.</h1>
+        <p><b>That's not the answer we were looking for. Please try again.</b></p>
     {% else %}
-        <div>
-            <h3>Some Information</h3>
-            <ul>
-                <li>Your participant ID is {{ session['participantID'] }}.</li>
-                <li>You were assigned to condition {{ session['condition'] }}.</li>
-                <li>This is the value of <tt>example</tt>: {{ example }}</li>
-            </ul>
-        </div>
+        <p>Look at the image below and type your answer in the box.</p>
     {% endif %}
 
     <hr>

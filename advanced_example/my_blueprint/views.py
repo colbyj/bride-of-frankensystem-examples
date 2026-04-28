@@ -1,4 +1,3 @@
-import datetime
 from flask import Blueprint, render_template
 from BOFS.util import *
 from BOFS.globals import db
@@ -14,11 +13,12 @@ my_blueprint = Blueprint('my_blueprint', __name__,
 @my_blueprint.route("/task", methods=['POST', 'GET'])
 @verify_correct_page
 @verify_session_valid
+@page_tables('answers')
 def task():
     incorrect = None
 
     if request.method == 'POST':
-        log = db.answers()  # This database table was defined in /advanced_example/tables/answers.json
+        log = db.answers()  # Defined in my_blueprint/tables/answers.json
         log.participantID = session['participantID']
         log.answer = request.form['answer']
 
@@ -29,7 +29,7 @@ def task():
             return redirect("/redirect_next_page")
         incorrect = True
 
-    return render_template("task.html", example="This is example text.", incorrect=incorrect)
+    return render_template("task.html", incorrect=incorrect)
 
 
 @my_blueprint.route("/analysis")
@@ -37,10 +37,11 @@ def task():
 def analysis():
     results = db.session.query(
             db.Participant.participantID,
-            db.func.count(db.MyTable.ID).label('tries')
+            db.func.count(db.answers.answersID).label('tries')
         ).\
-        join(db.MyTable, db.MyTable.participantID == db.Participant.participantID).\
+        join(db.answers, db.answers.participantID == db.Participant.participantID).\
         filter(db.Participant.finished).\
-        group_by(db.MyTable.participantID)
+        group_by(db.answers.participantID).\
+        all()
 
-    return render_template("templates/analysis.html", results=results)
+    return render_template("analysis.html", results=results)

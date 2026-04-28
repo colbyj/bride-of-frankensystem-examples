@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Analysis</title>
-</head>
-<body>
-    <ul>
-    {% for row in results %}
-        <li>pID: {{ row.participantID }}, tries: {{ row.tries }}</li>
-    {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "template.html" %}
+
+{% block content %}
+    <h2>Task Analysis</h2>
+
+    <p>Number of attempts each participant made before answering correctly:</p>
+
+    {% if results|length == 0 %}
+        <p><i>No completed participants yet.</i></p>
+    {% else %}
+        <table class="table table-sm">
+            <thead>
+                <tr><th>Participant ID</th><th>Tries</th></tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                    <tr><td>{{ row.participantID }}</td><td>{{ row.tries }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
