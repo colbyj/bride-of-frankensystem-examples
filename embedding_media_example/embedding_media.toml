@@ -1,0 +1,38 @@
+# Database settings
+SQLALCHEMY_DATABASE_URI = 'sqlite:///embedding_media.db'
+
+# --------------------
+# Application Settings
+# --------------------
+APPLICATION_ROOT = ''
+TITLE = 'Embedding Media Example'
+ADMIN_PASSWORD = 'example'
+USE_BREADCRUMBS = true
+PORT = 5005
+RETRIEVE_SESSIONS = true
+ALLOW_RETAKES = true
+LOG_GRID_CLICKS = false
+CONDITIONS = []
+
+# ------------------------------
+# Completion Codes and end route
+# ------------------------------
+STATIC_COMPLETION_CODE = 'example'
+GENERATE_COMPLETION_CODE = false
+COMPLETION_CODE_MESSAGE = 'Be sure to check out the admin page at /admin - the password is:'
+
+# ---------
+# Page List
+# ---------
+# Each page in this example demonstrates a different way to embed media:
+#   consent          — image inside a custom HTML template
+#   questionnaire/images — images in `instructions`, `textview` text, and a radiogrid
+#   questionnaire/videos — the new `video` question type (display-only, force_watch
+#                          with native controls, and force_watch with minimal_controls)
+PAGE_LIST = [
+    {name='Consent', path='consent'},
+    {name='Images', path='questionnaire/images'},
+    {name='Audio',  path='questionnaire/audio'},
+    {name='Videos', path='questionnaire/videos'},
+    {name='End', path='end'}
+]

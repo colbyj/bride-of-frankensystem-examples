@@ -1,0 +1,43 @@
+{
+    "title": "Embedding Audio",
+    "instructions": "The <code>audio</code> question type embeds an HTML5 audio clip from any URL. Like <code>video</code>, it accepts an absolute URL or a path under <code>/static/</code> &mdash; this example uses <code>/static/example_audio.ogg</code>. When <code>force_listen</code> is true, the <em>Continue</em> button stays disabled (with a notice next to it) until the participant has listened to <code>completion_threshold</code> of the clip.",
+    "code": "",
+    "questions": [
+        {
+            "questiontype": "textview",
+            "title": "1. Display-only audio (no telemetry, no enforcement)",
+            "text": "No <code>force_listen</code>, no <code>id</code>. The participant can play, pause, scrub, or skip the clip entirely."
+        },
+        {
+            "questiontype": "audio",
+            "src": "/static/example_audio.ogg"
+        },
+        {
+            "questiontype": "textview",
+            "title": "2. Force-listen with telemetry",
+            "text": "<code>force_listen</code> is on and an <code>id</code> is set, so start time, end time, and accumulated listened seconds are written to the database. A snap-back guard prevents seeking past the supposed playhead, and the <em>Continue</em> button stays disabled until the clip has been listened to."
+        },
+        {
+            "questiontype": "audio",
+            "id": "demo_clip",
+            "src": "/static/example_audio.ogg",
+            "force_listen": true,
+            "completion_threshold": 0.95
+        },
+        {
+            "questiontype": "radiogrid",
+            "instructions": "After listening, please rate the clip:",
+            "id": "audio_rating",
+            "labels": ["Strongly disagree", "", "Neutral", "", "Strongly agree"],
+            "q_text": [
+                {"id": "audio_clear",    "text": "The clip played clearly without issue."},
+                {"id": "audio_pleasant", "text": "The clip was pleasant to listen to."}
+            ]
+        },
+        {
+            "questiontype": "textview",
+            "title": "Embedding audio inline with HTML",
+            "text": "If you don't need telemetry or enforcement, you can also drop a plain <code>&lt;audio&gt;</code> tag into any HTML field (a <code>textview</code>'s <code>text</code>, a question's <code>instructions</code>, etc.): <div style='margin-top: 8px;'><audio src='/static/example_audio.ogg' controls preload='auto'></audio></div>"
+        }
+    ]
+}

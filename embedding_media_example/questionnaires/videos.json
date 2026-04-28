@@ -1,0 +1,55 @@
+{
+    "title": "Embedding Videos",
+    "instructions": "The <code>video</code> question type embeds an HTML5 video from any URL. The <code>src</code> can be either an absolute URL or a path to a file in this project's <code>static/</code> folder &mdash; this example uses <code>/static/example_video.webm</code>. When <code>force_watch</code> is true, the <em>Continue</em> button stays disabled (with a notice next to it) until the participant has watched <code>completion_threshold</code> of the video.",
+    "code": "",
+    "questions": [
+        {
+            "questiontype": "textview",
+            "title": "1. Display-only video",
+            "text": "No <code>force_watch</code>, no <code>id</code>, native controls. The participant can play, pause, scrub, or skip past the video entirely."
+        },
+        {
+            "questiontype": "video",
+            "src": "/static/example_video.webm",
+            "width": 480
+        },
+        {
+            "questiontype": "textview",
+            "title": "2. Force-watch with native controls",
+            "text": "<code>force_watch</code> is on, native controls are visible, and a <em>snap-back</em> guard prevents seeking past the supposed playhead. An <code>id</code> is set, so the participant's start time, end time, and accumulated watched seconds will be saved to the database. Try seeking forward &mdash; the seek bar snaps back, and the <em>Continue</em> button stays disabled until you've watched the video through."
+        },
+        {
+            "questiontype": "video",
+            "id": "demo_native",
+            "src": "/static/example_video.webm",
+            "width": 480,
+            "force_watch": true,
+            "completion_threshold": 0.95
+        },
+        {
+            "questiontype": "textview",
+            "title": "3. Force-watch with minimal controls",
+            "text": "<code>minimal_controls</code> is on, so the native scrubber is hidden entirely &mdash; only a custom Play/Pause button is shown. Seeking is impossible by construction. Watched-time still persists across page refreshes via the saved <code>{id}_watched</code> column."
+        },
+        {
+            "questiontype": "video",
+            "id": "demo_minimal",
+            "src": "/static/example_video.webm",
+            "width": 480,
+            "force_watch": true,
+            "minimal_controls": true,
+            "completion_threshold": 0.95
+        },
+        {
+            "questiontype": "radiolist",
+            "instructions": "After watching the videos above, how clear was the demonstration?",
+            "id": "video_clarity",
+            "labels": ["Very unclear", "Somewhat unclear", "Neutral", "Somewhat clear", "Very clear"]
+        },
+        {
+            "questiontype": "textview",
+            "title": "Embedding video inline with HTML",
+            "text": "If you don't need <code>force_watch</code> or telemetry, you can also drop a plain <code>&lt;video&gt;</code> tag into any HTML field (a <code>textview</code>'s <code>text</code>, a question's <code>instructions</code>, etc.): <div style='margin-top: 8px;'><video src='/static/example_video.webm' width='480' controls preload='auto'></video></div>"
+        }
+    ]
+}

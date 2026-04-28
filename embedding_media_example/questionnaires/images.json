@@ -1,0 +1,53 @@
+{
+    "title": "Embedding Images",
+    "instructions": "Anywhere a field accepts HTML, you can embed an image with a normal &lt;img&gt; tag. The image below appears in this questionnaire's top-level <code>instructions</code> field: <div style='margin-top: 8px;'><img src='/static/example_image.jpg' style='max-width: 200px;'></div>",
+    "code": "",
+    "questions": [
+        {
+            "questiontype": "textview",
+            "title": "Image inside a textview question",
+            "text": "A <code>textview</code> question is a great way to display media inline with other questions. Text before the image. <div style='margin: 8px 0;'><img src='/static/example_image.jpg' style='max-width: 240px;'></div> Text after the image."
+        },
+        {
+            "questiontype": "radiogrid",
+            "instructions": "An image can appear inside a question's <code>instructions</code> field too &mdash; useful when you want participants to react to a stimulus. <div style='margin: 8px 0;'><img src='/static/example_image_2.jpg' style='max-width: 200px;'></div>",
+            "id": "image_reaction",
+            "labels": ["Strongly disagree", "", "Neutral", "", "Strongly agree"],
+            "q_text": [
+                {"id": "img_appealing", "text": "I find the image above visually appealing."},
+                {"id": "img_clear",     "text": "The image above is clear and easy to make out."}
+            ]
+        },
+        {
+            "questiontype": "picture_select",
+            "instructions": "The <code>picture_select</code> question type uses images as the selectable options themselves. Pick whichever you'd rather look at. This default layout wraps the images in a centered row.",
+            "id": "favorite_picture",
+            "required": true,
+            "images": [
+                {"src": "/static/example_image.jpg",   "value": "a", "label": "Option A"},
+                {"src": "/static/example_image_2.jpg", "value": "b", "label": "Option B"}
+            ]
+        },
+        {
+            "questiontype": "picture_select",
+            "instructions": "Same options with <code>auto_resize: true</code> &mdash; both images render at the same height (the smallest natural height in the group), so the row lines up neatly.",
+            "id": "favorite_picture_resized",
+            "auto_resize": true,
+            "images": [
+                {"src": "/static/example_image.jpg",   "value": 1, "label": "Option A"},
+                {"src": "/static/example_image_2.jpg", "value": 2, "label": "Option B"}
+            ]
+        },
+        {
+            "questiontype": "picture_select",
+            "instructions": "With <code>vertical: true</code> the images stack in a centered column. <code>auto_resize</code> here matches every image's <em>width</em> to the smallest natural width. (Integer <code>value</code>s are stored as an integer column automatically.)",
+            "id": "favorite_picture_vertical",
+            "vertical": true,
+            "auto_resize": true,
+            "images": [
+                {"src": "/static/example_image.jpg",   "value": 1, "label": "Option A"},
+                {"src": "/static/example_image_2.jpg", "value": 2, "label": "Option B"}
+            ]
+        }
+    ]
+}
