@@ -1,0 +1,58 @@
+# =============================================================================
+# A/B Experiment Example
+# =============================================================================
+# A small between-subjects study with two conditions (Linear Menu vs Marking
+# Menu). Each participant is randomly assigned to one condition and only ever
+# sees that condition's instructions and task.
+#
+# This is the smallest example in the BOFS examples repo that exercises
+# `CONDITIONS` + `conditional_routing`. See the README for a walkthrough.
+# =============================================================================
+
+SQLALCHEMY_DATABASE_URI = 'sqlite:///ab_experiment.db'
+
+# --------------------
+# Application Settings
+# --------------------
+TITLE = 'A/B Experiment Example'
+ADMIN_PASSWORD = 'example'
+USE_BREADCRUMBS = true
+PORT = 5005
+
+GENERATE_COMPLETION_CODE = false
+STATIC_COMPLETION_CODE = 'ABDONE'
+COMPLETION_CODE_MESSAGE = 'Thank you. Your completion code is:'
+
+# ----------
+# Conditions
+# ----------
+# Two conditions, balanced across participants. BOFS's greedy balancer picks
+# whichever condition currently has the fewest participants, so over a run of
+# N participants the split stays close to 50/50.
+CONDITIONS = [
+    {label='Linear Menu', enabled=true},
+    {label='Marking Menu', enabled=true},
+]
+
+# ---------
+# Page List
+# ---------
+# /consent runs condition assignment at submission time, so by the time the
+# participant reaches the conditional_routing block their condition is set.
+# Each branch contains one instructions page and one task page; the
+# participant only sees the branch matching their assigned condition.
+PAGE_LIST = [
+    {name='Consent', path='consent'},
+    {name='Background', path='questionnaire/demographics'},
+    {conditional_routing=[
+        {condition=1, page_list=[
+            {name='Instructions', path='instructions/linear'},
+            {name='Task', path='linear'},
+        ]},
+        {condition=2, page_list=[
+            {name='Instructions', path='instructions/marking'},
+            {name='Task', path='marking'},
+        ]},
+    ]},
+    {name='End', path='end'},
+]

@@ -1,0 +1,37 @@
+{
+  "columns": {
+    "technique": {
+      "default": "linear"
+    },
+    "trial_index": {
+      "type": "integer",
+      "default": 0
+    },
+    "prompted_command": {
+      "default": ""
+    },
+    "selected_command": {
+      "default": ""
+    },
+    "correct": {
+      "type": "boolean",
+      "default": false
+    },
+    "response_time_ms": {
+      "type": "integer",
+      "default": 0
+    },
+    "trajectory": {
+      "type": "json"
+    }
+  },
+  "exports": [
+    {
+      "fields": {
+        "trials_completed": "count(trial_index)",
+        "accuracy": "avg(correct)",
+        "avg_response_ms": "avg(response_time_ms)"
+      }
+    }
+  ]
+}
