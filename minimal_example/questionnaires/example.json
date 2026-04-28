@@ -1,83 +1,94 @@
 {
-    "title":"Example Questionnaire",
-    "instructions":"Please answer each question.",
-    "code":"",
-    "questions":[
+    "title": "Example Questionnaire",
+    "instructions": "Please answer each question.",
+    "code": "",
+    "questions": [
         {
-            "questiontype":"textview",
-            "title":"I am a title",
-            "text":"This allows you to display descriptive or informative text."
+            "questiontype": "textview",
+            "title": "Section title",
+            "text": "Use a textview to display descriptive or informative text between questions."
         },
         {
-            "questiontype":"radiogrid",
-            "instructions":"Choose an option...",
-            "id":"radio_1",
-            "shuffle":"true",
-            "labels":[
+            "questiontype": "radiogrid",
+            "instructions": "Rate how much you agree with each statement.",
+            "id": "radio_1",
+            "shuffle": "true",
+            "labels": [
                 "I hate it!",
                 "",
                 "Neutral",
                 "",
                 "I love it!"
             ],
-            "q_text":[
+            "q_text": [
                 {
-                    "id":"q_1",
-                    "text":"dfdjs;aljd"
+                    "id": "q_1",
+                    "text": "I found this section easy to use."
                 },
                 {
-                    "id":"q_2",
-                    "text":"hahahahaha"
+                    "id": "q_2",
+                    "text": "The questions were clearly worded."
                 },
                 {
-                    "id":"q_3",
-                    "text":"muahahahaha"
+                    "id": "q_3",
+                    "text": "I would be willing to take this kind of survey again."
                 }
             ]
         },
         {
-            "questiontype":"radiolist",
-            "instructions":"Choose one option.",
-            "id":"radiolist_1",
-            "labels":[
+            "questiontype": "radiolist",
+            "instructions": "Choose one option.",
+            "id": "radiolist_1",
+            "labels": [
+                "Yes",
+                "Maybe",
+                "No"
+            ]
+        },
+                {
+            "questiontype": "radiolist",
+            "instructions": "Choose one option. This is required",
+            "id": "radiolist_2",
+            "required": true,
+            "labels": [
                 "Yes",
                 "Maybe",
                 "No"
             ]
         },
         {
-            "questiontype":"checklist",
-            "instructions":"Choose any options that apply.",
-            "id":"checklist_1",
-            "shuffle":true,
-            "questions":[
+            "questiontype": "checklist",
+            "instructions": "Choose any options that apply.",
+            "id": "checklist_1",
+            "shuffle": true,
+            "questions": [
                 {
-                    "id":"cl_1",
-                    "text":"Option 1"
+                    "id": "cl_1",
+                    "text": "Option 1"
                 },
                 {
-                    "id":"cl_2",
-                    "text":"Option 2"
+                    "id": "cl_2",
+                    "text": "Option 2"
                 },
                 {
-                    "id":"cl_3",
-                    "text":"Option 3"
+                    "id": "cl_3",
+                    "text": "Option 3"
                 }
             ]
         },
         {
-            "questiontype":"slider",
-            "instructions":"I am a slider",
-            "id":"slider_1",
-            "left":"left",
-            "right":"right",
-            "tick_count":5
+            "questiontype": "slider",
+            "instructions": "Drag the slider to indicate your response.",
+            "id": "slider_1",
+            "left": "left",
+            "right": "right",
+            "tick_count": 5
         },
         {
-            "questiontype":"field",
-            "instructions":"Enter some text.",
-            "placeholder":"I am a placeholder. Enter some text.",
-            "id":"input_1"
+            "questiontype": "field",
+            "instructions": "Enter some text.",
+            "placeholder": "Type your answer here",
+            "id": "input_1"
         },
         {
             "questiontype": "num_field",
@@ -86,20 +97,20 @@
         },
         {
             "id": "dropdownexample",
-            "questiontype":"drop_down",
-            "instructions":"Choose one from the list.",
-            "items":[
+            "questiontype": "drop_down",
+            "instructions": "Choose one item from the list.",
+            "items": [
                 "apples",
                 "oranges",
                 "watermelon"
             ]
         },
         {
-            "questiontype":"multi_field",
-            "id":"big",
-            "placeholder":"I am a placeholder.",
-            "instructions":"Enter a lot of text. Enter some text.",
-            "height":"100"
+            "questiontype": "multi_field",
+            "id": "big",
+            "placeholder": "Type your answer here",
+            "instructions": "Enter a longer response.",
+            "height": "100"
         }
     ]
 }
