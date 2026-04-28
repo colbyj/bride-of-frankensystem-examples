@@ -1,3 +1,6 @@
+{# Renders the Unity WebGL build at viewport size by extending
+   unity_webgl_fullscreen.html. Layout aside, the Jinja variables and the
+   participant-ID handoff work the same as in game_embed.html. #}
 {% extends "unity_webgl_fullscreen.html" %}
 
 {% set unityloader_path = "unity_example/unity_example.loader.js" %}
@@ -11,12 +14,14 @@
         "productVersion": "1.0"
       } %}
 
-{# Note that builds compressed with Brotli require HTTPS. This example uses gzip. #}
+{# Builds compressed with Brotli require HTTPS; this example uses gzip,
+   which works over plain HTTP for local development. #}
 
 {% block content_extra %}
     <script type="text/javascript">
-        // This will only work if the game is fully loaded, so I've put it on a 5 second timer.
-        // You can check whether gameInstance is null to determine if it is loaded.
+        // Push the participant ID into the running build. SendMessage
+        // requires the build to be fully loaded, so the call is delayed by
+        // 5 seconds.
         setTimeout(function() {
             if (gameInstance == null)
                 return;

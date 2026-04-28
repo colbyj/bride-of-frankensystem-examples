@@ -1,3 +1,7 @@
+{# Embeds the Unity WebGL build inside BOFS's standard page chrome by
+   extending unity_webgl.html. Override the Jinja variables below to point
+   at this project's build artifacts; the base template handles the
+   <canvas>, the loader script, and the createUnityInstance() call. #}
 {% extends "unity_webgl.html" %}
 
 {% set unityloader_path = "unity_example/unity_example.loader.js" %}
@@ -11,15 +15,18 @@
         "productVersion": "1.0"
       } %}
 
-{# Note that builds compressed with Brotli require HTTPS. This example uses gzip. #}
+{# Builds compressed with Brotli require HTTPS; this example uses gzip,
+   which works over plain HTTP for local development. #}
 
 {% set width = 1120 %}
 {% set height = 700 %}
 
 {% block content_extra %}
     <script type="text/javascript">
-        // This will only work if the game is fully loaded, so I've put it on a 5 second timer.
-        // You can check whether gameInstance is null to determine if it is loaded.
+        // Push the participant ID into the running build. SendMessage
+        // requires the build to be fully loaded, so the call is delayed by
+        // 5 seconds. A more robust alternative is to poll gameInstance and
+        // send the message as soon as it becomes non-null.
         setTimeout(function() {
             if (gameInstance == null)
                 return;

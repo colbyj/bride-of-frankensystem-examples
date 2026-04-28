@@ -1,3 +1,7 @@
+{# Fully custom Unity WebGL host page. Unlike game_embed.html and
+   game_fullscreen.html, this template does NOT extend a BOFS base
+   template, so none of the standard BOFS chrome appears. Use this when
+   you need full control over the surrounding HTML. #}
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
@@ -9,8 +13,8 @@
 <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
 <script src="unity_example/unity_example.loader.js"></script>
 <script>
+    // Mobile viewport tweak: fill the browser client area with the canvas.
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
         var meta = document.createElement('meta');
         meta.name = 'viewport';
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
@@ -26,15 +30,16 @@
         companyName: "DefaultCompany",
         productName: "unity_project",
         productVersion: "0.1",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+        // matchWebGLToCanvasSize: false, // Uncomment to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1,           // Uncomment to override low DPI rendering on high DPI displays.
     }).then((instance) => { gameInstance = instance });
-    // Note that builds compressed with Brotli require HTTPS. This example uses gzip.
+    // Builds compressed with Brotli require HTTPS; this example uses gzip.
 </script>
 
 <script type="text/javascript">
-    // This will only work if the game is fully loaded, so I've put it on a 5 second timer.
-    // You can check whether gameInstance is null to determine if it is loaded.
+    // Push the participant ID into the running build once the canvas has
+    // loaded. SendMessage requires gameInstance to be non-null, so the
+    // call is delayed by 5 seconds.
     setTimeout(function() {
         if (gameInstance == null)
             return;
