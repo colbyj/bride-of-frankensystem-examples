@@ -1,0 +1,22 @@
+{
+  "columns": {
+    "round": {"type": "integer", "default": 0},
+    "index": {"type": "integer", "default": 0},
+    "t_ms":  {"type": "integer", "default": 0},
+    "x":     {"type": "integer", "default": 0},
+    "y":     {"type": "integer", "default": 0}
+  },
+  "exports": [
+    {
+      "fields": {
+        "total_clicks": "count(*)"
+      }
+    },
+    {
+      "group_by": "round",
+      "fields": {
+        "round_clicks": "count(*)"
+      }
+    }
+  ]
+}

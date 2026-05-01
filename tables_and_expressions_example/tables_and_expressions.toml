@@ -1,0 +1,41 @@
+# Database settings
+SQLALCHEMY_DATABASE_URI = 'sqlite:///tables_and_expressions.db'
+
+# The secret key MUST be changed to something unique.
+SECRET_KEY = 'You Must Change This to Something Unique'
+
+# --------------------
+# Application Settings
+# --------------------
+APPLICATION_ROOT = ''
+TITLE = 'Tables and Expressions Example'
+ADMIN_PASSWORD = 'example'
+USE_BREADCRUMBS = true
+PORT = 5006
+RETRIEVE_SESSIONS = true
+ALLOW_RETAKES = true
+LOG_GRID_CLICKS = false
+CONDITIONS = []
+
+# External ID Settings
+EXTERNAL_ID_LABEL = "ID (type in some nonsense)"
+EXTERNAL_ID_PROMPT = "Please enter your provided ID (type in some nonsense)."
+
+# ------------------------------
+# Completion Codes and end route
+# ------------------------------
+STATIC_COMPLETION_CODE = 'example'
+GENERATE_COMPLETION_CODE = false
+COMPLETION_CODE_MESSAGE = 'The password for the admin panel:'
+
+# ---------
+# Page List
+# ---------
+PAGE_LIST = [
+    {name='Consent', path='consent'},
+    {name='Instructions', path='instructions/task_instructions'},
+    {name='Task', path='my_task_blueprint_route'},
+    {name='Results', path='instructions/results'},
+    {name='Reflection', path='questionnaire/results'},
+    {name='End', path='end'}
+]

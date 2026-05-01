@@ -1,0 +1,41 @@
+{% set scores = participant.table('scores') %}
+{% set clicks = participant.table('clicks') %}
+
+<h2>Your results</h2>
+
+<p>You finished all three rounds. Here is a summary of your clicks.</p>
+
+<table class="table" style="max-width: 28em;">
+    <thead>
+        <tr>
+            <th style="text-align: left;">Round</th>
+            <th style="text-align: right;">Clicks (score)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for round_num, score in scores.round_score.items() %}
+            <tr>
+                <td>Round {{ round_num }}</td>
+                <td style="text-align: right;">{{ score }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th style="text-align: left;">Total</th>
+            <th style="text-align: right;">{{ scores.total_score }}</th>
+        </tr>
+        <tr>
+            <th style="text-align: left;">Mean per round</th>
+            <th style="text-align: right;">{{ "%.1f"|format(scores.mean_score) }}</th>
+        </tr>
+        <tr>
+            <th style="text-align: left;">High score</th>
+            <th style="text-align: right;">{{ scores.high_score }}</th>
+        </tr>
+    </tfoot>
+</table>
+
+<p><small>The detail table recorded {{ clicks.total_clicks }} individual clicks ({% for round_num, n in clicks.round_clicks.items() %}{{ n }} in round {{ round_num }}{% if not loop.last %}, {% endif %}{% endfor %}).</small></p>
+
+<p>Click <em>Next</em> to continue to a short reflection question.</p>

@@ -1,0 +1,12 @@
+{
+  "title": "Your Results",
+  "instructions": "<h2>High score: {{ tables.scores.high_score }}</h2><p>Mean per round: {{ round(tables.scores.mean_score, 1) }} &middot; Total across rounds: {{ tables.scores.total_score }}</p><p>Round 1: {{ tables.scores.round_score[1] }} &middot; Round 2: {{ tables.scores.round_score[2] }} &middot; Round 3: {{ tables.scores.round_score[3] }}</p><p><small>Detail table recorded {{ tables.clicks.total_clicks }} individual clicks across the three rounds.</small></p>",
+  "questions": [
+    {
+      "id": "strategy",
+      "questiontype": "multi_field",
+      "title": "Reflection",
+      "instructions": "You scored {{ tables.scores.total_score }} clicks across {{ tables.clicks.total_clicks }} captured events. What strategy did you use?"
+    }
+  ]
+}
