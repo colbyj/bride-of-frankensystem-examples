@@ -1,0 +1,33 @@
+# Database
+SQLALCHEMY_DATABASE_URI = 'sqlite:///jspsych_example.db'
+SECRET_KEY = 'You Must Change This to Something Unique'
+
+# Application
+TITLE = 'jsPsych Example - Stroop Task with BOFS Backend'
+ADMIN_PASSWORD = 'example'
+PORT = 5006
+APPLICATION_ROOT = ''
+USE_BREADCRUMBS = true
+RETRIEVE_SESSIONS = true
+ALLOW_RETAKES = true
+LOG_QUESTIONNAIRE_INTERACTIONS = false
+
+# Single condition. Replace with a list of {label, enabled} entries to randomize.
+CONDITIONS = []
+
+# Completion
+GENERATE_COMPLETION_CODE = true
+COMPLETION_CODE_MESSAGE = 'Thanks for participating. Your completion code is:'
+
+# Pages shown to the participant, in order.
+# Demonstrates the complementary split: BOFS handles consent / questionnaires /
+# page flow; jsPsych runs the Stroop task in the browser and POSTs trial rows
+# back to the BOFS-managed `jspsych_trials` table.
+PAGE_LIST = [
+    {name='Consent', path='consent'},
+    {name='Demographics', path='questionnaire/demographics'},
+    {name='Instructions', path='instructions/task_instructions'},
+    {name='Stroop Task', path='jspsych_stroop'},
+    {name='Post-task', path='questionnaire/post_task'},
+    {name='End', path='end'}
+]

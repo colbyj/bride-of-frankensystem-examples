@@ -1,0 +1,23 @@
+{
+  "columns": {
+    "trial_index": {"type": "integer"},
+    "word":        {"type": "string"},
+    "ink_color":   {"type": "string"},
+    "congruent":   {"type": "boolean"},
+    "response":    {"type": "string"},
+    "correct":     {"type": "boolean"},
+    "rt":          {"type": "float"},
+    "raw":         {"type": "json"}
+  },
+  "exports": [
+    {
+      "fields": {
+        "n_trials":            "count(trial_index)",
+        "accuracy":            "avg(case when correct then 1.0 else 0.0 end)",
+        "mean_rt_correct":     "avg(case when correct then rt end)",
+        "mean_rt_congruent":   "avg(case when correct and congruent then rt end)",
+        "mean_rt_incongruent": "avg(case when correct and not congruent then rt end)"
+      }
+    }
+  ]
+}

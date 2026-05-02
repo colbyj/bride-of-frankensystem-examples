@@ -1,0 +1,29 @@
+{
+    "title": "Demographics",
+    "instructions": "Please answer a few questions about yourself before the task.",
+    "code": "",
+    "questions": [
+        {
+            "questiontype": "radiolist",
+            "instructions": "Which hand do you use to operate a computer keyboard most of the time?",
+            "id": "handedness",
+            "labels": [
+                "Left",
+                "Right",
+                "Both about equally"
+            ],
+            "required": true
+        },
+        {
+            "questiontype": "radiolist",
+            "instructions": "Have you completed a Stroop task before?",
+            "id": "prior_stroop",
+            "labels": [
+                "Yes",
+                "No",
+                "Not sure"
+            ],
+            "required": true
+        }
+    ]
+}
