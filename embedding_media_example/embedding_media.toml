@@ -11,7 +11,7 @@ USE_BREADCRUMBS = true
 PORT = 5005
 RETRIEVE_SESSIONS = true
 ALLOW_RETAKES = true
-LOG_GRID_CLICKS = false
+LOG_QUESTIONNAIRE_INTERACTIONS = false
 CONDITIONS = []
 
 # ------------------------------

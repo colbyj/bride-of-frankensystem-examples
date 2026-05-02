@@ -12,7 +12,7 @@ APPLICATION_ROOT = ''            # Optional URL prefix; rarely changed
 USE_BREADCRUMBS = false          # Show a breadcrumb-style progress bar
 RETRIEVE_SESSIONS = true         # Resume a participant's progress if their ID was already used
 ALLOW_RETAKES = true             # If false (and external_id is in use), the same ID cannot be entered twice
-LOG_GRID_CLICKS = false          # Log every radiogrid click (useful for fine-grained timing)
+LOG_QUESTIONNAIRE_INTERACTIONS = false  # Log focus/blur/change/paste events on questionnaire inputs
 
 # Two conditions; the Unity build calls /fetch_condition to discover which one it is in.
 CONDITIONS = [{label='condition 1', enabled=true}, {label='condition 2', enabled=true}]

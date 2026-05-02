@@ -15,7 +15,7 @@ USE_BREADCRUMBS = true        # Show breadcrumbs-style progress bar
 PORT = 5005                    # Configure what port the project will be accessible at
 RETRIEVE_SESSIONS = true       # If ID entered at /external_id was already used, then attempt to load a participant's progress from the database and redirect them to where they last were.
 ALLOW_RETAKES = true           # With the external_id page in use, setting this to false will prevent the same ID from being used twice.
-LOG_GRID_CLICKS = false        # Used for more fine-grained logging of participant's progress through questionnaires. Log the time the each radio button in a radio grid is clicked.
+LOG_QUESTIONNAIRE_INTERACTIONS = false  # Log focus/blur/change/paste events on questionnaire inputs
 CONDITIONS = []                # Leave blank for only 1 condition. Format for multiple conditions is shown below
 #CONDITIONS = [{label='condition 1', enabled=true}, {label='condition 2', enabled=true}]
 
@@ -26,10 +26,10 @@ EXTERNAL_ID_PROMPT = "Please enter your provided ID (type in some nonsense)."
 # ------------------------------
 # Completion Codes and end route
 # ------------------------------
-STATIC_COMPLETION_CODE = 'example'        # Set this if you want all participants to be given the same completion code at the end of the survey.
+STATIC_COMPLETION_CODE = 'example'   # Set this if you want all participants to be given the same completion code at the end of the survey.
 GENERATE_COMPLETION_CODE = false     # Generate a random completion code for the user.
 COMPLETION_CODE_MESSAGE = 'The password for the admin panel:'
-# OUTGOING_URL = ''                 # On the /end route, participants can be optionally redirected to an external page instead of being given a code
+# OUTGOING_URL = ''                  # On the /end route, participants can be optionally redirected to an external page instead of being given a code
 
 # ---------
 # Page List
@@ -41,6 +41,7 @@ COMPLETION_CODE_MESSAGE = 'The password for the admin panel:'
 PAGE_LIST = [
     {name='Consent', path='consent'},
     {name='Instructions', path='instructions/task_instructions'},
-    {name='Task', path='simple/my_task'},
+    #{name='Task', path='simple/my_task'},
+    {name='Task', path='my_task_blueprint_route'},
     {name='End', path='end'}
 ]

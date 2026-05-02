@@ -9,7 +9,7 @@ APPLICATION_ROOT = ''            # Optional URL prefix; rarely changed
 USE_BREADCRUMBS = false          # Show a breadcrumb-style progress bar
 RETRIEVE_SESSIONS = true         # Resume a participant's progress if their ID was already used
 ALLOW_RETAKES = true             # If false, the same external ID cannot be entered twice
-LOG_GRID_CLICKS = false          # Log every radiogrid click (useful for fine-grained timing)
+LOG_QUESTIONNAIRE_INTERACTIONS = false  # Log focus/blur/change/paste events on questionnaire inputs
 
 # Two conditions; the page list below shows different questionnaires depending on which
 # condition the participant is assigned to.

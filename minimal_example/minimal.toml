@@ -9,7 +9,7 @@ APPLICATION_ROOT = ''            # Optional URL prefix; rarely changed
 USE_BREADCRUMBS = true           # Show a breadcrumb-style progress bar
 RETRIEVE_SESSIONS = true         # Resume a participant's progress if their ID was already used
 ALLOW_RETAKES = true             # If false (and external_id is in use), the same ID cannot be entered twice
-LOG_GRID_CLICKS = false          # Log every radiogrid click (useful for fine-grained timing)
+LOG_QUESTIONNAIRE_INTERACTIONS = true  # Log focus/blur/change/paste events on questionnaire inputs (useful for fine-grained timing and authenticity checks)
 
 # Conditions: leave empty for a single condition. Example with two conditions:
 # CONDITIONS = [{label='condition 1', enabled=true}, {label='condition 2', enabled=true}]
