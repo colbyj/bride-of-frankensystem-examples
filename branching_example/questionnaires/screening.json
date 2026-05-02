@@ -1,0 +1,32 @@
+{
+    "title": "Technology Use - Screening",
+    "instructions": "A few quick questions about how you use technology. Some follow-up questions on this page will appear or disappear depending on what you've answered.",
+    "questions": [
+        {
+            "id": "uses_social_media",
+            "questiontype": "radiolist",
+            "instructions": "Do you use social media at least once per week?",
+            "labels": ["Yes", "No"],
+            "required": true
+        },
+        {
+            "id": "primary_device",
+            "questiontype": "drop_down",
+            "instructions": "What device do you primarily use to access the internet?",
+            "items": ["Smartphone", "Laptop or desktop", "Tablet", "Other"]
+        },
+        {
+            "id": "primary_device_other",
+            "questiontype": "field",
+            "instructions": "Please specify the device.",
+            "show_if": "primary_device == 'Other'"
+        },
+        {
+            "id": "uses_for_work",
+            "questiontype": "radiolist",
+            "instructions": "Do you use your devices for work or study?",
+            "labels": ["Yes", "No"],
+            "required": true
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "title": "Technology Use - Social Media",
+    "instructions": "A few questions about how you use social media.",
+    "questions": [
+        {
+            "id": "primary_platform",
+            "questiontype": "drop_down",
+            "instructions": "Which social media platform do you use most?",
+            "items": ["Facebook", "Instagram", "X (Twitter)", "TikTok", "LinkedIn", "Reddit", "Other"]
+        },
+        {
+            "id": "primary_platform_other",
+            "questiontype": "field",
+            "instructions": "Please specify the platform.",
+            "show_if": "primary_platform == 'Other'"
+        },
+        {
+            "id": "daily_time",
+            "questiontype": "radiolist",
+            "instructions": "Roughly how much time do you spend on social media each day?",
+            "labels": ["Less than 30 minutes", "30-60 minutes", "1-2 hours", "More than 2 hours"]
+        },
+        {
+            "id": "primary_purpose",
+            "questiontype": "drop_down",
+            "instructions": "What do you mainly use social media for?",
+            "items": ["Keeping in touch with others", "News and current events", "Entertainment", "Work or professional networking", "Other"]
+        }
+    ]
+}

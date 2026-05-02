@@ -1,0 +1,26 @@
+{
+    "title": "Technology Use - Past Social Media Use",
+    "instructions": "A few more questions about your history with social media.",
+    "questions": [
+        {
+            "id": "used_in_past",
+            "questiontype": "radiolist",
+            "instructions": "Have you previously used social media?",
+            "labels": ["Yes", "No"],
+            "required": true
+        },
+        {
+            "id": "stopped_reason",
+            "questiontype": "drop_down",
+            "instructions": "Why did you stop using social media?",
+            "items": ["Privacy or security concerns", "Too time-consuming", "Negative effects on wellbeing", "The platform shut down or changed", "No longer relevant to me", "Other"],
+            "show_if": "used_in_past == 'Yes'"
+        },
+        {
+            "id": "stopped_reason_other",
+            "questiontype": "field",
+            "instructions": "Please describe the reason.",
+            "show_if": "stopped_reason == 'Other'"
+        }
+    ]
+}

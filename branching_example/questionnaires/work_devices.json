@@ -1,0 +1,24 @@
+{
+    "title": "Technology Use - Work and Study",
+    "instructions": "A few questions about how you use technology for work or study.",
+    "questions": [
+        {
+            "id": "work_purpose",
+            "questiontype": "drop_down",
+            "instructions": "What do you primarily use your devices for at work or study?",
+            "items": ["Communication (email, messaging)", "Video conferencing", "Document editing", "Research or information gathering", "Creative work", "Other"]
+        },
+        {
+            "id": "work_purpose_other",
+            "questiontype": "field",
+            "instructions": "Please specify.",
+            "show_if": "work_purpose == 'Other'"
+        },
+        {
+            "id": "work_hours",
+            "questiontype": "radiolist",
+            "instructions": "Roughly how many hours per day do you use devices for work or study?",
+            "labels": ["Less than 2 hours", "2-4 hours", "4-6 hours", "More than 6 hours"]
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+# Database
+SQLALCHEMY_DATABASE_URI = 'sqlite:///branching.db'
+
+# Application
+TITLE = 'Example Project - Branching'
+ADMIN_PASSWORD = 'example'      # Used to log in to /admin
+PORT = 5006
+APPLICATION_ROOT = ''
+USE_BREADCRUMBS = true
+RETRIEVE_SESSIONS = true
+ALLOW_RETAKES = true
+
+# No conditions for this example — branching is driven entirely by the
+# participant's own answers to the screening questionnaire.
+CONDITIONS = []
+
+GENERATE_COMPLETION_CODE = true
+COMPLETION_CODE_MESSAGE = 'Thanks for participating. Your completion code is:'
+
+# The branching happens in three places:
+#   1. Inside `questionnaires/screening.json`, `primary_device_other` hides
+#      itself until "Other" is selected — question-level show_if.
+#   2. A `conditional_routing` block with show_if on each arm routes social
+#      media users and non-users through different pages. The non-user arm
+#      spans two pages.
+#   3. `work_devices` is a single page with a flat page-level show_if —
+#      it appears only for participants who use devices for work or study.
+PAGE_LIST = [
+    {name='Consent', path='consent'},
+    {name='Screening', path='questionnaire/screening'},
+    {conditional_routing=[
+        {show_if="screening.uses_social_media == 'Yes'", page_list=[
+            {name='Social Media Use', path='questionnaire/active_users'}
+        ]},
+        {show_if="screening.uses_social_media == 'No'", page_list=[
+            {name='Non-Use', path='questionnaire/non_users'},
+            {name='Past Use', path='questionnaire/past_use'}
+        ]}
+    ]},
+    {name='Work and Study', path='questionnaire/work_devices', show_if="screening.uses_for_work == 'Yes'"},
+    {name='End', path='end'}
+]

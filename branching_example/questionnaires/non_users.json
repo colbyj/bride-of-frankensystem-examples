@@ -1,0 +1,24 @@
+{
+    "title": "Technology Use - Social Media Avoidance",
+    "instructions": "A few questions about your relationship with social media.",
+    "questions": [
+        {
+            "id": "main_reason",
+            "questiontype": "drop_down",
+            "instructions": "What is the main reason you don't use social media?",
+            "items": ["Privacy concerns", "Not interested in the content", "Time concerns", "Negative impact on wellbeing", "Never felt the need", "Other"]
+        },
+        {
+            "id": "main_reason_other",
+            "questiontype": "field",
+            "instructions": "Please describe the reason.",
+            "show_if": "main_reason == 'Other'"
+        },
+        {
+            "id": "awareness",
+            "questiontype": "radiolist",
+            "instructions": "How familiar are you with current social media platforms?",
+            "labels": ["Very familiar", "Somewhat familiar", "Not very familiar"]
+        }
+    ]
+}
