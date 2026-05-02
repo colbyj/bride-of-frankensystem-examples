@@ -1,0 +1,43 @@
+{
+    "title": "Post-task Questionnaire",
+    "instructions": "A few questions about your experience with the task.",
+    "code": "",
+    "questions": [
+        {
+            "questiontype": "slider",
+            "instructions": "How difficult did you find the task?",
+            "id": "difficulty",
+            "left": "very easy",
+            "right": "very hard",
+            "tick_count": 7,
+            "required": true
+        },
+        {
+            "questiontype": "slider",
+            "instructions": "How much effort did you put into the task?",
+            "id": "effort",
+            "left": "no effort",
+            "right": "a great deal of effort",
+            "tick_count": 7,
+            "required": true
+        },
+        {
+            "questiontype": "radiolist",
+            "instructions": "Did you notice any pattern in the trials (e.g., word/colour matching vs. mismatching)?",
+            "id": "noticed_pattern",
+            "labels": [
+                "Yes",
+                "No",
+                "Not sure"
+            ],
+            "required": true
+        },
+        {
+            "questiontype": "multi_field",
+            "instructions": "Briefly describe any strategy you used to respond quickly.",
+            "id": "strategy",
+            "placeholder": "Type your answer here",
+            "height": "100"
+        }
+    ]
+}
