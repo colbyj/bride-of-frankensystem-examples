@@ -40,9 +40,9 @@ below. Everything else is stock BOFS.
 | `CONDITIONS_FROM_CSV` (alternative) | `conditions.csv` plus a commented-out config |
 | `consent_nc` + explicit `assign_condition` | `day2.toml`'s page list |
 | `conditional_routing` in `PAGE_LIST` | Per-condition branches on both days |
-| Simple custom HTML pages (no Python) | `templates/instructions/*.html` |
+| Per-condition instruction templates | `menu_task/templates/instructions/*.html` |
+| A self-contained custom blueprint | `menu_task/` (routes, templates, instructions, static, table) |
 | JSON questionnaires | `questionnaires/demographics.json`, `recall.json` |
-| A custom blueprint with Flask routes | `menu_task/views.py` |
 | Project-local static files (JS, CSS) | `menu_task/static/` |
 | Per-trial logging via `JSONTable` | `menu_task/tables/menu_trials.json` |
 | `JSONTable` `json` column type | `trajectory` column (raw mouse samples) |
@@ -137,15 +137,21 @@ questionnaires, this is the part to read closely.
 
 ```
 menu_task/
-├── views.py                    # 4 Flask routes, one per (phase × technique)
-├── templates/task.html         # Shared template extending BOFS's base layout
-├── tables/menu_trials.json     # JSONTable schema — auto-creates the DB table
+├── views.py                          # 4 Flask routes, one per (phase × technique)
+├── templates/
+│   ├── task.html                     # Shared task template extending BOFS's base layout
+│   └── instructions/
+│       ├── learn_linear.html         # Day-1 linear instructions
+│       ├── learn_marking.html        # Day-1 marking instructions
+│       ├── recall_linear.html        # Day-2 linear reminder
+│       └── recall_marking.html       # Day-2 marking reminder
+├── tables/menu_trials.json           # JSONTable schema — auto-creates the DB table
 └── static/
-    ├── d3.v7.min.js            # D3 v7, bundled for offline use
-    ├── linear_menu.js          # Drop-down menu component
-    ├── marking_menu.js         # Radial press-and-drag menu component
-    ├── task_runner.js          # Trial loop, trajectory capture, batch POST
-    └── menu_task.css           # Task styling
+    ├── d3.v7.min.js                  # D3 v7, bundled for offline use
+    ├── linear_menu.js                # Drop-down menu component
+    ├── marking_menu.js               # Radial press-and-drag menu component
+    ├── task_runner.js                # Trial loop, trajectory capture, batch POST
+    └── menu_task.css                 # Task styling
 ```
 
 Three things make this a normal BOFS blueprint and not something
@@ -162,6 +168,16 @@ exotic:
 - **The four routes are listed in `PAGE_LIST` and guarded with
   `@verify_session_valid` and `@verify_correct_page`** so participants
   can't skip ahead or revisit a finished page.
+
+The instruction templates live inside the blueprint too. BOFS searches
+every blueprint's template folder when resolving `instructions/<name>`,
+so a `PAGE_LIST` entry like `path='instructions/learn_linear'`
+resolves to `menu_task/templates/instructions/learn_linear.html`
+without any extra wiring. The whole task — Python routes, instruction
+copy, task UI, schema, JS, CSS — sits in one self-contained folder
+that you can copy into another project as a unit. The
+`ab_experiment/` example in this repo does exactly that: same
+`menu_task/` folder, different `PAGE_LIST` and conditions.
 
 If you've never built a custom page before, the
 [Simple Custom Pages](https://bride-of-frankensystem.readthedocs.io/en/latest/getting_started/simple_custom_pages.html)
@@ -304,10 +320,10 @@ read. Both commands assume your working directory is this folder.
 | `conditions.csv` | Sample CSV for the `CONDITIONS_FROM_CSV` alternative. |
 | `questionnaires/demographics.json` | Day 1 background questions. |
 | `questionnaires/recall.json` | Day 2 self-report after the recall test. |
-| `templates/instructions/learn_*.html` | Day 1 instructions, per condition. |
-| `templates/instructions/recall_*.html` | Day 2 instructions, per condition. |
 | `menu_task/views.py` | Blueprint with 4 routes for the four (phase × technique) task pages. |
 | `menu_task/templates/task.html` | Shared task template extending BOFS's base layout. |
+| `menu_task/templates/instructions/learn_*.html` | Day 1 instructions, per condition. |
+| `menu_task/templates/instructions/recall_*.html` | Day 2 instructions, per condition. |
 | `menu_task/static/d3.v7.min.js` | D3.js v7 (bundled for offline use). |
 | `menu_task/static/linear_menu.js` | Drop-down menu component. |
 | `menu_task/static/marking_menu.js` | Radial press-and-drag menu component. |

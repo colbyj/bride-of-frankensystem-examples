@@ -18,8 +18,8 @@ the project to read.
 |---|---|
 | Balanced condition assignment via `CONDITIONS` | `ab_experiment.toml` |
 | `conditional_routing` in `PAGE_LIST` | `ab_experiment.toml` page list |
-| Per-condition instruction templates | `templates/instructions/{linear,marking}.html` |
-| A custom blueprint with Flask routes | `menu_task/views.py` |
+| Per-condition instruction templates | `menu_task/templates/instructions/{linear,marking}.html` |
+| A self-contained custom blueprint | `menu_task/` (routes, templates, instructions, static, table) |
 | Project-local static files (JS, CSS) | `menu_task/static/` |
 | JSON questionnaires | `questionnaires/demographics.json` |
 | Per-trial logging via `JSONTable` | `menu_task/tables/menu_trials.json` |
@@ -85,6 +85,23 @@ for the blueprint pattern in detail. The same task code is also used
 by the longitudinal example in this repo — that example's README has a
 more detailed walkthrough of the JS pieces.
 
+### Self-contained blueprint
+
+Everything the menu task needs lives inside `menu_task/`: the Flask
+routes (`views.py`), the per-condition instruction pages
+(`templates/instructions/`), the shared task template
+(`templates/task.html`), the trial log schema (`tables/menu_trials.json`),
+and the JS/CSS assets (`static/`). BOFS searches every blueprint's
+template folder when resolving `instructions/<name>` and
+`questionnaire/<name>` lookups, so instructions placed inside the
+blueprint are reachable from `PAGE_LIST` exactly like project-level
+ones — `path='instructions/linear'` finds `menu_task/templates/instructions/linear.html`.
+
+The payoff is reuse: the longitudinal example in this repo drops the
+same `menu_task/` folder into a different project (with different
+`PAGE_LIST` and condition logic) and gets the routes, the task code,
+and the matching instructions all together.
+
 ## Running the example
 
 From this folder:
@@ -106,9 +123,9 @@ each participant's progress and download `menu_trials` as CSV.
 | `ab_experiment.toml` | Project config: conditions, page list, settings. |
 | `consent.html` | Placeholder consent page. |
 | `questionnaires/demographics.json` | Background questions before the task. |
-| `templates/instructions/linear.html` | Instructions for the Linear Menu condition. |
-| `templates/instructions/marking.html` | Instructions for the Marking Menu condition. |
 | `menu_task/views.py` | Blueprint with one route per condition. |
+| `menu_task/templates/instructions/linear.html` | Instructions for the Linear Menu condition. |
+| `menu_task/templates/instructions/marking.html` | Instructions for the Marking Menu condition. |
 | `menu_task/templates/task.html` | Shared task template (extends BOFS's base layout). |
 | `menu_task/tables/menu_trials.json` | Per-trial logging schema. |
 | `menu_task/static/d3.v7.min.js` | D3.js v7 (bundled for offline use). |
