@@ -76,14 +76,14 @@ The `jspsych_example` runs a Stroop task implemented with [jsPsych](https://www.
 page of an otherwise BOFS-driven flow (consent → demographics → instructions → jsPsych task → post-task
 questionnaire → end). jsPsych handles trial timing and key capture; BOFS handles questionnaires, condition
 assignment, page flow, and storage. Per-trial data is POSTed in a single batch to `/table/jspsych_trials`.
-The jsPsych library files are vendored under `jspsych_stroop/static/jspsych/` so the example runs offline.
+The jsPsych library files are vendored under `static/jspsych/` so the example runs offline.
 See the example's own `README.md` for the run sequence.
 
 ### lab.js Example
 The `labjs_example` is the parallel of `jspsych_example` built with [lab.js](https://lab.js.org/) instead.
 The PAGE_LIST and questionnaires are identical; the difference is which JS framework runs the Stroop trials
 and the shape of the per-trial data submitted to `/table/labjs_trials`. The lab.js library is vendored under
-`labjs_stroop/static/labjs/`. See the example's own `README.md` for the run sequence.
+`static/labjs/`. See the example's own `README.md` for the run sequence.
 
 ## Running in PyCharm
 

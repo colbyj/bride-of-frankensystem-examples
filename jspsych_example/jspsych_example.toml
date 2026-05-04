@@ -22,12 +22,13 @@ COMPLETION_CODE_MESSAGE = 'Thanks for participating. Your completion code is:'
 # Pages shown to the participant, in order.
 # Demonstrates the complementary split: BOFS handles consent / questionnaires /
 # page flow; jsPsych runs the Stroop task in the browser and POSTs trial rows
-# back to the BOFS-managed `jspsych_trials` table.
+# back to the BOFS-managed `jspsych_trials` table. The Stroop page is a
+# `custom/` page so jsPsych takes over the full viewport with no BOFS chrome.
 PAGE_LIST = [
     {name='Consent', path='consent'},
     {name='Demographics', path='questionnaire/demographics'},
     {name='Instructions', path='instructions/task_instructions'},
-    {name='Stroop Task', path='jspsych_stroop'},
+    {name='Stroop Task', path='custom/jspsych_stroop'},
     {name='Post-task', path='questionnaire/post_task'},
     {name='End', path='end'}
 ]

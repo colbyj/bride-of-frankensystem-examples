@@ -17,16 +17,16 @@ At the end of each round the JS posts that round's clicks as a single bulk reque
 
 <p>
 After the task, a results questionnaire pulls per-round scores from the <code>scores</code> table
-using the new bracket-subscript syntax (<code>tables.scores.round_score[1]</code>) and the click
+using the bracket-subscript syntax (<code>tables.scores.round_score[1]</code>) and the click
 total from <code>tables.clicks.total_clicks</code>. All of these resolve at render time per
-participant, with no custom blueprint code.
+participant, with no Python code.
 </p>
 
 <h2>Files of interest</h2>
 
 <ul>
-    <li><code>my_task/tables/scores.json</code> &ndash; per-round summary table with both scalar and <code>group_by</code> exports.</li>
-    <li><code>my_task/tables/clicks.json</code> &ndash; per-click detail table; bulk-POSTed once per round.</li>
-    <li><code>my_task/questionnaires/results.json</code> &ndash; uses <code>{{ ... }}</code> placeholders to render a personalized results page.</li>
-    <li><code>my_task/static/my_task.js</code> &ndash; captures clicks and posts to both endpoints.</li>
+    <li><code>tables/scores.json</code> &ndash; per-round summary table with both scalar and <code>group_by</code> exports.</li>
+    <li><code>tables/clicks.json</code> &ndash; per-click detail table; bulk-POSTed once per round.</li>
+    <li><code>questionnaires/results.json</code> &ndash; uses <code>{{ ... }}</code> placeholders to render a personalized results page.</li>
+    <li><code>static/my_task.js</code> &ndash; captures clicks and posts to both endpoints.</li>
 </ul>

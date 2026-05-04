@@ -9,20 +9,19 @@ condition assignment, page flow, and data storage.
 
 ```
 labjs_example/
-├── labjs_example.toml                   # BOFS config (port 5007, PAGE_LIST)
+├── labjs_example.toml               # BOFS config (port 5007, PAGE_LIST)
 ├── consent.html
 ├── questionnaires/
 │   ├── demographics.json
 │   └── post_task.json
-└── labjs_stroop/                        # auto-discovered blueprint
-    ├── views.py                         # one route: /labjs_stroop
-    ├── templates/
-    │   ├── labjs_stroop.html
-    │   └── instructions/task_instructions.html
-    ├── static/
-    │   ├── labjs_stroop.js              # Stroop sequence + POST + redirect
-    │   └── labjs/                       # vendored 20.2.4 (see VENDORED.md)
-    └── tables/labjs_trials.json         # per-trial column schema
+├── tables/
+│   └── labjs_trials.json            # per-trial column schema
+├── static/
+│   ├── labjs_stroop.js              # Stroop sequence + POST + redirect
+│   └── labjs/                       # vendored 20.2.4 (see VENDORED.md)
+└── templates/
+    ├── custom/labjs_stroop.html     # standalone HTML, no BOFS chrome
+    └── instructions/task_instructions.html
 ```
 
 ## Running
@@ -37,18 +36,20 @@ Visit <http://127.0.0.1:5007/>. Admin panel: <http://127.0.0.1:5007/admin>
 ## How it works
 
 The PAGE_LIST routes the participant through built-in BOFS pages (consent,
-two questionnaires, an instructions snippet, end) and one custom blueprint
-route, `/labjs_stroop`, which is the only page that runs lab.js.
+two questionnaires, an instructions snippet, end) and one `custom/` page,
+`/custom/labjs_stroop`, which is the only page that runs lab.js.
 
-The blueprint serves a stand-alone HTML page that loads vendored lab.js and
-runs `static/labjs_stroop.js`. That script builds 24 fixation+stimulus pairs
-as `lab.html.Screen` components inside a `lab.flow.Sequence`. Each stimulus
-screen sets `correctResponse` so lab.js auto-tags `correct` on the data row,
-and a `data: { trial_kind: 'stroop', ... }` field merges per-trial fields
-into the row. After the sequence ends, the `'end'` handler filters
-`study.options.datastore.data` to `trial_kind === 'stroop'`, maps each row
-to typed columns plus a `raw` JSON blob, and POSTs the array to
-`/table/labjs_trials`. `/table/<name>` is a built-in BOFS endpoint backed
-by `tables/labjs_trials.json`; it auto-stamps `participantID` and
-`timeSubmitted`. After the POST resolves, the script navigates to
-`/redirect_next_page` to advance BOFS to the post-task questionnaire.
+The custom page is a complete HTML document — BOFS renders it directly with
+no template wrapping, so lab.js has full control of the viewport. It loads
+vendored lab.js and runs `static/labjs_stroop.js`. That script builds 24
+fixation+stimulus pairs as `lab.html.Screen` components inside a
+`lab.flow.Sequence`. Each stimulus screen sets `correctResponse` so lab.js
+auto-tags `correct` on the data row, and a `data: { trial_kind: 'stroop',
+... }` field merges per-trial fields into the row. After the sequence ends,
+the `'end'` handler filters `study.options.datastore.data` to
+`trial_kind === 'stroop'`, maps each row to typed columns plus a `raw` JSON
+blob, and POSTs the array to `/table/labjs_trials`. `/table/<name>` is a
+built-in BOFS endpoint backed by `tables/labjs_trials.json`; it auto-stamps
+`participantID` and `timeSubmitted`. After the POST resolves, the script
+navigates to `/redirect_next_page` to advance BOFS to the post-task
+questionnaire.

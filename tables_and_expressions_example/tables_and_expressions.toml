@@ -34,7 +34,7 @@ COMPLETION_CODE_MESSAGE = 'The password for the admin panel:'
 PAGE_LIST = [
     {name='Consent', path='consent'},
     {name='Instructions', path='instructions/task_instructions'},
-    {name='Task', path='my_task_blueprint_route'},
+    {name='Task', path='simple/my_task'},
     {name='Results', path='instructions/results'},
     {name='Reflection', path='questionnaire/results'},
     {name='End', path='end'}
