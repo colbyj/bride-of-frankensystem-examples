@@ -19,7 +19,7 @@ then visit http://localhost:5005/.
 | Page | Pattern |
 |------|---------|
 | **Consent** | An image embedded directly in a custom HTML template (`consent.html`). |
-| **Images** | An image inside a questionnaire's top-level `instructions` field, an image inside a `textview` question, an image inside a `radiogrid` question's `instructions` field (for stimulus + Likert response), and the `picture_select` question type with images as the options themselves. |
+| **Images** | An image inside a questionnaire's top-level `instructions` field, an image inside a `textview` question, an image inside a `radiogrid` question's `instructions` field (for stimulus + Likert response), the `picture_select` question type with images as the options themselves, and the `image_click` question type for capturing click coordinates on an image (single-click and multi-click modes). |
 | **Audio** | The `audio` question type in two modes (display-only and force-listen with telemetry), plus a final `textview` example showing that you can also drop a plain `<audio controls>` tag into any HTML field if you don't need telemetry or enforcement. |
 | **Videos** | The new `video` question type in three modes: display-only, force-watch with native controls + snap-back seek guard, and force-watch with minimal controls (no scrubber, custom Play/Pause). |
 
