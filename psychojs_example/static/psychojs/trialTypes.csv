@@ -1,0 +1,10 @@
+text,letterColor,corrAns
+red,red,left
+green,green,down
+blue,blue,right
+red,green,down
+red,blue,right
+green,red,left
+green,blue,right
+blue,red,left
+blue,green,down

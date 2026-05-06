@@ -1,0 +1,22 @@
+{
+  "columns": {
+    "trial_index": {"type": "integer"},
+    "word":        {"type": "string"},
+    "letterColor": {"type": "string"},
+    "corrAns":     {"type": "string"},
+    "response":    {"type": "string"},
+    "correct":     {"type": "integer"},
+    "rt":          {"type": "float"}
+  },
+  "exports": [
+    {
+      "fields": {
+        "n_trials":            "count(trial_index)",
+        "accuracy":            "avg(case when correct = 1 then 1.0 else 0.0 end)",
+        "mean_rt_correct":     "avg(case when correct = 1 then rt end)",
+        "mean_rt_congruent":   "avg(case when correct = 1 and word = letterColor then rt end)",
+        "mean_rt_incongruent": "avg(case when correct = 1 and word != letterColor then rt end)"
+      }
+    }
+  ]
+}
