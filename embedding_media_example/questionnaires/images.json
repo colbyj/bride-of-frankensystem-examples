@@ -40,9 +40,9 @@
         },
         {
             "questiontype": "picture_select",
-            "instructions": "With <code>vertical: true</code> the images stack in a centered column. <code>auto_resize</code> here matches every image's <em>width</em> to the smallest natural width. (Integer <code>value</code>s are stored as an integer column automatically.)",
+            "instructions": "With <code>horizontal: false</code> the images stack in a centered column. <code>auto_resize</code> here matches every image's <em>width</em> to the smallest natural width. (Integer <code>value</code>s are stored as an integer column automatically.)",
             "id": "favorite_picture_vertical",
-            "vertical": true,
+            "horizontal": false,
             "auto_resize": true,
             "images": [
                 {"src": "/static/example_image.jpg",   "value": 1, "label": "Option A"},
@@ -53,16 +53,16 @@
             "questiontype": "image_click",
             "instructions": "The <code>image_click</code> question type stores the participant's click position on an image. With the default <code>max_clicks: 1</code> and <code>required: true</code>, each click moves a single crosshair, and the <em>Continue</em> button stays disabled until at least one click is placed. Coordinates are saved as natural-image pixels in two columns: <code>click_target_x</code> and <code>click_target_y</code>.",
             "id": "click_target",
-            "image_src": "/static/example_image_2.jpg",
-            "image_max_width": "400px",
+            "src": "/static/example_image_2.jpg",
+            "width": 400,
             "required": true
         },
         {
             "questiontype": "image_click",
             "instructions": "Setting <code>max_clicks</code> above 1 lets the participant place several markers (a fourth click here drops the oldest). The points are saved as a JSON array in a single text column called <code>click_spots</code>, in click order.",
             "id": "click_spots",
-            "image_src": "/static/example_image.jpg",
-            "image_max_width": "400px",
+            "src": "/static/example_image.jpg",
+            "width": 400,
             "max_clicks": 3,
             "marker_color": "#0066ff"
         }
