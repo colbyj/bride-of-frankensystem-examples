@@ -1,55 +1,21 @@
-# jsPsych Example — Stroop Task with BOFS Backend
+# jsPsych Example — Stroop Task
 
-A worked example of integrating [jsPsych](https://www.jspsych.org/) with Bride
-of Frankensystem (BOFS). jsPsych runs the trial-by-trial Stroop task in the
-browser; BOFS handles consent, demographics and post-task questionnaires,
-condition assignment, page flow, and data storage.
-
-## Layout
+[jsPsych](https://www.jspsych.org/) running a 24-trial Stroop on a single
+`custom/` page; everything else (consent, demographics, post-task
+questionnaire, page flow, storage) is stock BOFS.
 
 ```
 jspsych_example/
-├── jspsych_example.toml             # BOFS config (port 5006, PAGE_LIST)
-├── consent.html
-├── questionnaires/
-│   ├── demographics.json
-│   └── post_task.json
-├── tables/
-│   └── jspsych_trials.json          # per-trial column schema
+├── jspsych_example.toml             # PAGE_LIST + port (5009)
+├── tables/jspsych_trials.json       # per-trial column schema for /table/jspsych_trials
 ├── static/
-│   ├── jspsych_stroop.js            # Stroop timeline + POST + redirect
-│   └── jspsych/                     # vendored 8.2.3 (see VENDORED.md)
-└── templates/
-    ├── custom/jspsych_stroop.html   # standalone HTML, no BOFS chrome
-    └── instructions/task_instructions.html
+│   ├── jspsych_stroop.js            # builds the timeline; on_finish POSTs and redirects
+│   └── jspsych/                     # vendored 8.2.3 — see VENDORED.md to upgrade
+└── templates/custom/jspsych_stroop.html  # full HTML, no BOFS chrome
 ```
 
-## Running
-
-```
-BOFS run jspsych_example.toml -d
-```
-
-Visit <http://127.0.0.1:5006/>. Admin panel: <http://127.0.0.1:5006/admin>
-(password: `example`).
-
-## How it works
-
-The PAGE_LIST routes the participant through built-in BOFS pages (consent,
-two questionnaires, an instructions snippet, end) and one `custom/` page,
-`/custom/jspsych_stroop`, which is the only page that runs jsPsych.
-
-The custom page is a complete HTML document — BOFS renders it directly with
-no template wrapping, so jsPsych has full control of the viewport. It loads
-vendored jsPsych + the `html-keyboard-response` plugin and runs
-`static/jspsych_stroop.js`. That script builds a 24-trial timeline (12
-congruent + 12 incongruent), and in its `on_finish` handler maps each trial
-to typed columns plus a `raw` JSON blob and POSTs the array to
-`/table/jspsych_trials`. `/table/<name>` is a built-in BOFS endpoint backed
-by `tables/jspsych_trials.json`; it auto-stamps `participantID` and
-`timeSubmitted`. After the POST resolves, the script navigates to
-`/redirect_next_page` to advance BOFS to the post-task questionnaire.
-
-## Upgrading jsPsych
-
-Versions, sources, and SHA256 hashes live in `static/jspsych/VENDORED.md`.
+The custom page bypasses BOFS's template wrapping so jsPsych owns the
+viewport. After the timeline ends, the script batch-POSTs trial rows to
+`/table/jspsych_trials` (built-in endpoint, schema in
+`tables/jspsych_trials.json`, auto-stamps `participantID` /
+`timeSubmitted`), then navigates to `/redirect_next_page`.

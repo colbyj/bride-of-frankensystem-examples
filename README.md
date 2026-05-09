@@ -1,92 +1,61 @@
 # bride-of-frankensystem-examples
-Example projects for the Bride of Frankensystem.
 
-## Instructions
-The example projects will run if BOFS has been installed via pip. You must use the `BOFS` command from your command 
-line to start each project.
+Example projects for [Bride of Frankensystem](https://bride-of-frankensystem.readthedocs.io/).
+Each subdirectory is a runnable BOFS project with its own `README.md`
+covering what it shows; this file is the index.
 
-It is recommended that you install BOFS via a virtual environment. The steps for doing this are:
-1. Create the venv with: `python -m venv bofs_venv`
-2. Activate the venv.
-   * In Windows this is done via `.\bofs_venv\Scripts\activate.bat` if using `cmd` or `.\bofs_venv\Scripts\Activate.ps1` 
-     if using Powershell (the default command line in Windows 11).
-   * In MacOS or Linux this is done via `source bofs_venv/bin/activate`
-3. Install BOFS via pip:
-   * `pip install bride-of-frankensystem`
-4. Ensure that you can execute the `BOFS` command. Try it without any arguments and you should see a help message.
+## Setup
 
+Install BOFS into a virtual environment:
 
-### Minimal Example
-The minimal example is a minimal project that only contains questionnaires.
+```
+python -m venv bofs_venv
+# activate it:
+#   Windows (cmd):        .\bofs_venv\Scripts\activate.bat
+#   Windows (PowerShell): .\bofs_venv\Scripts\Activate.ps1
+#   macOS / Linux:        source bofs_venv/bin/activate
+pip install bride-of-frankensystem
+```
 
-To run the example, ensure that your working directory is the same directory as the `.toml` file and run:
- - `BOFS minimal.toml -d` for the debug version (for development).
- - `BOFS minimal.toml` for the production version.
+Verify by running `BOFS` with no arguments — you should see the help
+message.
 
-### Advanced Example
-The advanced example is a project that demonstrates most of the capabilities of Bride of Frankensystem.
+## Running an example
 
-To run the example, ensure that your working directory is the same directory as the `.toml` file and run:
- - `BOFS advanced.toml -d` for the debug version (for development).
- - `BOFS advanced.toml` for the production version.
+`cd` into the example's directory (the working directory must be the
+same as the `.toml` file), then:
 
-### Unity Examples
-Two parallel examples demonstrate one approach for integrating a Unity WebGL build into BOFS. Each contains both a
-ready-to-run BOFS project (`bofs_project/`) and the Unity source project (`unity_project/`) that produced the build,
-so you can run them as-is or rebuild after editing the scene/script. Pick whichever matches your local Unity install:
+```
+BOFS run <project>.toml -d
+```
 
- - `unity_example_2021.1/` — Unity 2021.1.
- - `unity_example_2023.2/` — Unity 2023.2.
+`-d` is debug mode. Drop the flag for production. Each example prints
+its URL on startup; the admin panel is at `/admin` with password
+`example`.
 
-Both examples cover the same integration points: hosting the WebGL build (in three layouts: BOFS-chrome, fullscreen,
-fully custom), pushing the participant ID into the running build, reading the assigned condition from inside Unity,
-posting data back to a custom database table, and advancing the BOFS page flow from within Unity. See each
-example's own `README.md` for the run command, port, and a walkthrough of the integration.
-
-### Embedding Media Example
-The `embedding_media_example` demonstrates every place that media (images and videos)
-can be embedded in a study: in custom HTML templates, in questionnaire `instructions`
-fields, in `textview` questions, and as their own `video` question (with optional
-"force watch" enforcement). It also shows how the project's `static/` folder serves
-asset files at `/static/<filename>`.
-
-To run the example, ensure that your working directory is the same directory as the `.toml` file and run:
- - `BOFS embedding_media.toml -d` for the debug version (for development).
- - `BOFS embedding_media.toml` for the production version.
-
-### Branching Example
-The `branching_example` demonstrates the two `show_if` features together: questions on a single page that
-appear or disappear based on what the participant has answered so far, and a page-level branch that picks
-one of two follow-up questionnaires based on a screening answer. See the example's own `README.md` for the
-walkthrough.
-
-To run the example, ensure that your working directory is the same directory as the `.toml` file and run:
- - `BOFS branching.toml -d` for the debug version (for development).
- - `BOFS branching.toml` for the production version.
-
-### Longitudinal Example
-The `longitudinal_example` is a two-day HCI menu-learning study that demonstrates how to carry condition
-assignments forward across sessions using `CONDITIONS_FROM_DB`. Day 0 randomizes participants into a
-Linear Menu or Marking Menu learning condition; day 1 looks them up by Prolific ID and runs the matching
-recall task. See the example's own `README.md` for the run sequence and an alternative using
-`CONDITIONS_FROM_CSV`.
-
-### jsPsych Example
-The `jspsych_example` runs a Stroop task implemented with [jsPsych](https://www.jspsych.org/) on a single
-page of an otherwise BOFS-driven flow (consent → demographics → instructions → jsPsych task → post-task
-questionnaire → end). jsPsych handles trial timing and key capture; BOFS handles questionnaires, condition
-assignment, page flow, and storage. Per-trial data is POSTed in a single batch to `/table/jspsych_trials`.
-The jsPsych library files are vendored under `static/jspsych/` so the example runs offline.
-See the example's own `README.md` for the run sequence.
-
-### lab.js Example
-The `labjs_example` is the parallel of `jspsych_example` built with [lab.js](https://lab.js.org/) instead.
-The PAGE_LIST and questionnaires are identical; the difference is which JS framework runs the Stroop trials
-and the shape of the per-trial data submitted to `/table/labjs_trials`. The lab.js library is vendored under
-`static/labjs/`. See the example's own `README.md` for the run sequence.
-
-## Running in PyCharm
-
-Run BOFS as a module, set the working directory to the example project you're interested in, and specify the `.toml` file for that project.
+For PyCharm: run BOFS as a module, set the working directory to the
+example, and pass the `.toml` file as the argument.
 
 ![Screenshot of PyCharm](pycharm_run.png)
+
+## Examples
+
+| Example | What it shows | Port |
+|---|---|---|
+| [`minimal_example/`](minimal_example/) | Smallest possible BOFS project — just questionnaires. | 5001 |
+| [`advanced_example/`](advanced_example/) | Most BOFS features in one project: custom blueprint, custom DB tables, conditions, the lot. | 5002 |
+| [`branching_example/`](branching_example/) | Question-level `show_if` and page-level `conditional_routing`. | 5007 |
+| [`embedding_media_example/`](embedding_media_example/) | Every place images, audio, and video can sit in a study, with telemetry. | 5005 |
+| [`tables_and_expressions_example/`](tables_and_expressions_example/) | Custom `JSONTable`s, scalar + `group_by` exports, `{{ }}` placeholders in instructions and questionnaires. | 5012 |
+| [`ab_experiment/`](ab_experiment/) | Smallest example using `CONDITIONS` and `conditional_routing`. | 5010 |
+| [`longitudinal_example/`](longitudinal_example/) | Two-session study; day 2 carries day 1's conditions forward via `CONDITIONS_FROM_DB`. | 5003 / 5004 |
+| [`p5_example/`](p5_example/) | A custom interactive page driven by [p5.js](https://p5js.org/). | 5005 |
+| [`jspsych_example/`](jspsych_example/) | [jsPsych](https://www.jspsych.org/) Stroop task on a single `custom/` page; trial data POSTed to a BOFS table. | 5009 |
+| [`labjs_example/`](labjs_example/) | Same Stroop study as `jspsych_example`, built with [lab.js](https://lab.js.org/). | 5008 |
+| [`psychojs_example/`](psychojs_example/) | A PsychoPy Builder export adapted to post trials to BOFS instead of Pavlovia. | 5011 |
+| [`unity_example_2021.1/`](unity_example_2021.1/) | Unity WebGL build embedded in BOFS in three layouts. | 5006 |
+| [`unity_example_2023.2/`](unity_example_2023.2/) | Same as above against Unity 2023.2. | 5006 |
+
+Several examples share port numbers — that's fine since you only run one
+at a time. See each example's `README.md` for what to look at and any
+setup beyond `BOFS run`.
