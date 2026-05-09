@@ -40,11 +40,13 @@ CONDITIONS = [
 ]
 
 EXTERNAL_ID_LABEL = "Participant ID"
-EXTERNAL_ID_PROMPT = "Please enter the same Participant ID you used on day 1."
+EXTERNAL_ID_PROMPT = "Please enter a participant ID for testing"
 
-GENERATE_COMPLETION_CODE = false
-STATIC_COMPLETION_CODE = 'DAY2DONE'
-COMPLETION_CODE_MESSAGE = 'Thank you. Your final completion code is:'
+# Completion: every participant sees the same static code. Set GENERATE_COMPLETION_CODE = true
+# (or OUTGOING_URL) instead to randomise the code or redirect to an external page.
+STATIC_COMPLETION_CODE = 'example'
+COMPLETION_CODE_MESSAGE = 'Thanks for trying the example. The admin panel password is:'
+# OUTGOING_URL = ''
 
 # ---------
 # Page List

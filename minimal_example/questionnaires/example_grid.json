@@ -8,6 +8,7 @@
             "instructions": "Rate your agreement with each statement.",
             "id": "radio_1",
             "shuffle": "true",
+            "question_width": "240px",
             "labels": [
                 "Strongly disagree",
                 "",

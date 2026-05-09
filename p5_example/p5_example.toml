@@ -19,17 +19,14 @@ LOG_QUESTIONNAIRE_INTERACTIONS = false  # Log focus/blur/change/paste events on 
 CONDITIONS = []                # Leave blank for only 1 condition. Format for multiple conditions is shown below
 #CONDITIONS = [{label='condition 1', enabled=true}, {label='condition 2', enabled=true}]
 
-# External ID Settings, adjust these to adjust the phrasing on /external_id for Prolific, MTurk, etc.
-EXTERNAL_ID_LABEL = "ID (type in some nonsense)"
-EXTERNAL_ID_PROMPT = "Please enter your provided ID (type in some nonsense)."
-
 # ------------------------------
 # Completion Codes and end route
 # ------------------------------
-STATIC_COMPLETION_CODE = 'example'   # Set this if you want all participants to be given the same completion code at the end of the survey.
-GENERATE_COMPLETION_CODE = false     # Generate a random completion code for the user.
-COMPLETION_CODE_MESSAGE = 'The password for the admin panel:'
-# OUTGOING_URL = ''                  # On the /end route, participants can be optionally redirected to an external page instead of being given a code
+# Completion: every participant sees the same static code. Set GENERATE_COMPLETION_CODE = true
+# (or OUTGOING_URL) instead to randomise the code or redirect to an external page.
+STATIC_COMPLETION_CODE = 'example'
+COMPLETION_CODE_MESSAGE = 'Thanks for trying the example. The admin panel password is:'
+# OUTGOING_URL = ''
 
 # ---------
 # Page List

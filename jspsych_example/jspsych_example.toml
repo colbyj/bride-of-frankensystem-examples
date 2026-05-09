@@ -5,7 +5,7 @@ SECRET_KEY = 'You Must Change This to Something Unique'
 # Application
 TITLE = 'jsPsych Example - Stroop Task with BOFS Backend'
 ADMIN_PASSWORD = 'example'
-PORT = 5006
+PORT = 5009
 APPLICATION_ROOT = ''
 USE_BREADCRUMBS = true
 RETRIEVE_SESSIONS = true
@@ -15,9 +15,11 @@ LOG_QUESTIONNAIRE_INTERACTIONS = false
 # Single condition. Replace with a list of {label, enabled} entries to randomize.
 CONDITIONS = []
 
-# Completion
-GENERATE_COMPLETION_CODE = true
-COMPLETION_CODE_MESSAGE = 'Thanks for participating. Your completion code is:'
+# Completion: every participant sees the same static code. Set GENERATE_COMPLETION_CODE = true
+# (or OUTGOING_URL) instead to randomise the code or redirect to an external page.
+STATIC_COMPLETION_CODE = 'example'
+COMPLETION_CODE_MESSAGE = 'Thanks for trying the example. The admin panel password is:'
+# OUTGOING_URL = ''
 
 # Pages shown to the participant, in order.
 # Demonstrates the complementary split: BOFS handles consent / questionnaires /

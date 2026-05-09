@@ -1,18 +1,22 @@
 <h1>lab.js + BOFS Example</h1>
 
+
 <p>
-    This is the <i>labjs_example</i> project for <i>Bride of Frankensystem</i>. It's a
-    demonstration of integrating <a href="https://lab.js.org/">lab.js</a> as the
-    in-browser experiment runner while BOFS handles consent, questionnaires, condition
-    assignment, page flow, and data storage. No data is being collected for any purpose
-    and the cover story is fictional.
+    This is the <code>labjs_example</code> project for <i>Bride of Frankensystem</i>. It's a demonstration, not a
+    real research study. Any collected data will be discarded, and any cover story is fictional.
 </p>
+
 <p>
-    The text on this page is placeholder consent text; in a real BOFS project it would be
-    replaced with ethics-approved language describing the actual study, risks, data
-    handling, and the right to withdraw.
+    This example demonstrates how to integrate <a href="https://lab.js.org/">lab.js</a> as the in-browser
+    experiment runner with Bride of Frankensystem providing the surrounding infrastructure, including:
 </p>
+
+<ul>
+    <li>BOFS handling consent, demographics, instructions, a post-task questionnaire, and overall page flow.</li>
+    <li>lab.js running a short Stroop task (about 24 trials) inside a BOFS <code>custom/</code> page so it takes the full viewport with no BOFS chrome.</li>
+    <li>Trial data POSTed back from lab.js into a BOFS-managed custom database table (<code>labjs_trials</code>) that's exportable through the admin panel.</li>
+</ul>
+
 <p>
-    You will be asked some demographic questions, complete a short Stroop task (about 24
-    trials, ~2 minutes), and then answer a brief follow-up.
+    The admin panel is accessible at <a href="/admin"><code>/admin</code></a>. The password is <code>example</code>.
 </p>

@@ -1,15 +1,22 @@
-<h1>Example of Embedding JavaScript Tasks</h1>
+<h1>p5.js Example</h1>
+
 
 <p>
-In this example, a simple JavaScript task implemented using p5.js is shown integrated into BOF. The source code for the task itself is in <code>p5_example/static</code>.
-</p>
-
-<h2>How it works</h2>
-
-<p>
-The p5 task uses an HTTP POST request to the <code>/table/my_task</code> URL. This sends data via a JSON object to BOF. To enable this, there is a "table" defined in JSON: <code>p5_example/tables/my_task.json</code>. This table needs to define all of the properties in the JSON object that the JavaScript code will send to BOF. This file also describes how the data from the task will be exported from BOF.
+    This is the <code>p5_example</code> project for <i>Bride of Frankensystem</i>. It's a demonstration, not a
+    real research study. Any collected data will be discarded, and any cover story is fictional.
 </p>
 
 <p>
-This example also shows off two ways of embedding html into BOF, <i>instructions</i> and <i>simple pages</i>. The only difference between the two is the amount of formatting and layout that is provided by default. An instruction page will include a way to proceed, whereas in a simple page, you need to control when the participant continues forward by sending them to the <code>/redirect_next_page</code> URL.
+    This example demonstrates how to embed a JavaScript task (built with <a href="https://p5js.org/">p5.js</a>)
+    inside Bride of Frankensystem, including:
+</p>
+
+<ul>
+    <li>A custom database table defined in <code>tables/my_task.json</code> that declares the columns the task will post and how they're exported.</li>
+    <li>The p5 task posting JSON to <code>/table/my_task</code> to record participant data.</li>
+    <li>Two ways of embedding HTML into BOFS: an <i>instructions</i> page (with a built-in continue control) and a <i>simple page</i> (which advances the participant by sending them to <code>/redirect_next_page</code>).</li>
+</ul>
+
+<p>
+    The admin panel is accessible at <a href="/admin"><code>/admin</code></a>. The password is <code>example</code>.
 </p>

@@ -7,7 +7,7 @@ SECRET_KEY = 'Example key for the Unity 2023.2 example. Please change me.'
 # Application
 TITLE = 'Unity Example Project (Unity 2023.2)'
 ADMIN_PASSWORD = 'example'      # Used to log in to /admin
-PORT = 5007
+PORT = 5006
 APPLICATION_ROOT = ''            # Optional URL prefix; rarely changed
 USE_BREADCRUMBS = false          # Show a breadcrumb-style progress bar
 RETRIEVE_SESSIONS = true         # Resume a participant's progress if their ID was already used
@@ -19,12 +19,12 @@ CONDITIONS = [{label='condition 1', enabled=true}, {label='condition 2', enabled
 
 # External ID prompt shown on /external_id (used for Prolific, MTurk, lab-issued IDs, etc.)
 EXTERNAL_ID_LABEL = "Participant ID"
-EXTERNAL_ID_PROMPT = "Please enter the ID provided to you."
+EXTERNAL_ID_PROMPT = "Please enter a participant ID for testing"
 
 # Completion: every participant sees the same static code. Set GENERATE_COMPLETION_CODE = true
 # (or OUTGOING_URL) instead to randomise the code or redirect to an external page.
 STATIC_COMPLETION_CODE = 'example'
-COMPLETION_CODE_MESSAGE = 'Thanks for participating. Your completion code is:'
+COMPLETION_CODE_MESSAGE = 'Thanks for trying the example. The admin panel password is:'
 # OUTGOING_URL = ''
 
 # Pages shown to the participant, in order.

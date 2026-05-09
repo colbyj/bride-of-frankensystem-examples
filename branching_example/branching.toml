@@ -4,7 +4,7 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///branching.db'
 # Application
 TITLE = 'Example Project - Branching'
 ADMIN_PASSWORD = 'example'      # Used to log in to /admin
-PORT = 5006
+PORT = 5007
 APPLICATION_ROOT = ''
 USE_BREADCRUMBS = true
 RETRIEVE_SESSIONS = true
@@ -14,8 +14,11 @@ ALLOW_RETAKES = true
 # participant's own answers to the screening questionnaire.
 CONDITIONS = []
 
-GENERATE_COMPLETION_CODE = true
-COMPLETION_CODE_MESSAGE = 'Thanks for participating. Your completion code is:'
+# Completion: every participant sees the same static code. Set GENERATE_COMPLETION_CODE = true
+# (or OUTGOING_URL) instead to randomise the code or redirect to an external page.
+STATIC_COMPLETION_CODE = 'example'
+COMPLETION_CODE_MESSAGE = 'Thanks for trying the example. The admin panel password is:'
+# OUTGOING_URL = ''
 
 # The branching happens in three places:
 #   1. Inside `questionnaires/screening.json`, `primary_device_other` hides

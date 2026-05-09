@@ -17,11 +17,13 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///ab_experiment.db'
 TITLE = 'A/B Experiment Example'
 ADMIN_PASSWORD = 'example'
 USE_BREADCRUMBS = true
-PORT = 5005
+PORT = 5010
 
-GENERATE_COMPLETION_CODE = false
-STATIC_COMPLETION_CODE = 'ABDONE'
-COMPLETION_CODE_MESSAGE = 'Thank you. Your completion code is:'
+# Completion: every participant sees the same static code. Set GENERATE_COMPLETION_CODE = true
+# (or OUTGOING_URL) instead to randomise the code or redirect to an external page.
+STATIC_COMPLETION_CODE = 'example'
+COMPLETION_CODE_MESSAGE = 'Thanks for trying the example. The admin panel password is:'
+# OUTGOING_URL = ''
 
 # ----------
 # Conditions

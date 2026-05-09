@@ -11,22 +11,20 @@ APPLICATION_ROOT = ''
 TITLE = 'Tables and Expressions Example'
 ADMIN_PASSWORD = 'example'
 USE_BREADCRUMBS = true
-PORT = 5006
+PORT = 5012
 RETRIEVE_SESSIONS = true
 ALLOW_RETAKES = true
 LOG_QUESTIONNAIRE_INTERACTIONS = false
 CONDITIONS = []
 
-# External ID Settings
-EXTERNAL_ID_LABEL = "ID (type in some nonsense)"
-EXTERNAL_ID_PROMPT = "Please enter your provided ID (type in some nonsense)."
-
 # ------------------------------
 # Completion Codes and end route
 # ------------------------------
+# Completion: every participant sees the same static code. Set GENERATE_COMPLETION_CODE = true
+# (or OUTGOING_URL) instead to randomise the code or redirect to an external page.
 STATIC_COMPLETION_CODE = 'example'
-GENERATE_COMPLETION_CODE = false
-COMPLETION_CODE_MESSAGE = 'The password for the admin panel:'
+COMPLETION_CODE_MESSAGE = 'Thanks for trying the example. The admin panel password is:'
+# OUTGOING_URL = ''
 
 # ---------
 # Page List

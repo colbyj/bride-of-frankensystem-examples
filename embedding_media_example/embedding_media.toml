@@ -17,9 +17,10 @@ CONDITIONS = []
 # ------------------------------
 # Completion Codes and end route
 # ------------------------------
-STATIC_COMPLETION_CODE = 'example'
 GENERATE_COMPLETION_CODE = false
-COMPLETION_CODE_MESSAGE = 'Be sure to check out the admin page at /admin - the password is:'
+STATIC_COMPLETION_CODE = 'example'
+COMPLETION_CODE_MESSAGE = 'Thanks for trying the example. The admin panel password is:'
+# OUTGOING_URL = ''
 
 # ---------
 # Page List

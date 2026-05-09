@@ -1,18 +1,22 @@
-<h1>Menu Comparison Study</h1>
+<h1>A/B Experiment Example</h1>
+
 
 <p>
-    This is the <i>ab_experiment</i> project for <i>Bride of Frankensystem</i>. It's a demonstration, not a real
-    research study — no data is being collected for any purpose and the cover story is fictional.
-</p>
-<p>
-    The text on this page is placeholder consent text; in a real BOFS project it would be replaced with ethics-approved
-    language describing the actual study, risks, data handling, and the right to withdraw.
+    This is the <code>ab_experiment</code> project for <i>Bride of Frankensystem</i>. It's a demonstration, not a
+    real research study. Any collected data will be discarded, and any cover story is fictional.
 </p>
 
-<hr>
+<p>
+    This example demonstrates how to run a between-subjects A/B study in Bride of Frankensystem, including:
+</p>
+
+<ul>
+    <li>Two conditions (Linear Menu vs. Marking Menu) balanced across participants by BOFS's greedy assigner.</li>
+    <li>A <code>conditional_routing</code> block that shows each participant only their condition's instructions and task pages.</li>
+    <li>A shared demographics questionnaire collected before condition assignment branches.</li>
+    <li>A custom blueprint that implements the menu-selection task and records trial data.</li>
+</ul>
 
 <p>
-    This is a short study about two ways of choosing commands in software interfaces. You'll be assigned to one of
-    two menu styles and complete a small set of practice trials with that interface. The whole study takes a few
-    minutes.
+    The admin panel is accessible at <a href="/admin"><code>/admin</code></a>. The password is <code>example</code>.
 </p>

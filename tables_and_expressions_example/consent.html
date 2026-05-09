@@ -1,32 +1,23 @@
 <h1>Tables and Expressions Example</h1>
 
-<p>
-This example demonstrates two BOFS features that go together: the <code>JSONTable</code> data
-collection system (with both single-row and bulk inserts) and the inline <code>{{ expression }}</code>
-substitution available in questionnaire JSON.
-</p>
-
-<h2>What it does</h2>
 
 <p>
-The task is a three-round clicker. While each round is running, every click is captured
-as one row in the <code>clicks</code> table (round, click index, time since round start, x, y).
-At the end of each round the JS posts that round's clicks as a single bulk request to
-<code>/table/clicks</code> and writes a one-row summary to <code>/table/scores</code>.
+    This is the <code>tables_and_expressions_example</code> project for <i>Bride of Frankensystem</i>. It's a
+    demonstration, not a real research study. Any collected data will be discarded, and any cover story is fictional.
 </p>
 
 <p>
-After the task, a results questionnaire pulls per-round scores from the <code>scores</code> table
-using the bracket-subscript syntax (<code>tables.scores.round_score[1]</code>) and the click
-total from <code>tables.clicks.total_clicks</code>. All of these resolve at render time per
-participant, with no Python code.
+    This example demonstrates two BOFS features that work well together &mdash; the <code>JSONTable</code> data
+    collection system and inline <code>{{ expression }}</code> substitution in questionnaire JSON &mdash; including:
 </p>
-
-<h2>Files of interest</h2>
 
 <ul>
-    <li><code>tables/scores.json</code> &ndash; per-round summary table with both scalar and <code>group_by</code> exports.</li>
-    <li><code>tables/clicks.json</code> &ndash; per-click detail table; bulk-POSTed once per round.</li>
-    <li><code>questionnaires/results.json</code> &ndash; uses <code>{{ ... }}</code> placeholders to render a personalized results page.</li>
-    <li><code>static/my_task.js</code> &ndash; captures clicks and posts to both endpoints.</li>
+    <li>A three-round clicker task that records every click as a row in the <code>clicks</code> table (round, click index, time since round start, x, y) via a bulk POST to <code>/table/clicks</code> at the end of each round.</li>
+    <li>A one-row per-round summary written to the <code>scores</code> table via <code>/table/scores</code>.</li>
+    <li>A results questionnaire that uses <code>{{ tables.scores.round_score[1] }}</code> bracket-subscript syntax and <code>{{ tables.clicks.total_clicks }}</code> to render a personalized results page with no Python code.</li>
+    <li>Both scalar and <code>group_by</code> exports defined in <code>tables/scores.json</code>.</li>
 </ul>
+
+<p>
+    The admin panel is accessible at <a href="/admin"><code>/admin</code></a>. The password is <code>example</code>.
+</p>

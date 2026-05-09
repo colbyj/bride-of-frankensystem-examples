@@ -4,8 +4,7 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///minimal.db'
 # Application
 TITLE = 'Example Project - A Simple Survey'
 ADMIN_PASSWORD = 'example'      # Used to log in to /admin
-PORT = 5003
-APPLICATION_ROOT = ''            # Optional URL prefix; rarely changed
+PORT = 5001
 USE_BREADCRUMBS = true           # Show a breadcrumb-style progress bar
 RETRIEVE_SESSIONS = true         # Resume a participant's progress if their ID was already used
 ALLOW_RETAKES = true             # If false (and external_id is in use), the same ID cannot be entered twice
@@ -17,8 +16,8 @@ CONDITIONS = []
 
 # Completion: a random code is generated for each participant. Set STATIC_COMPLETION_CODE
 # (or OUTGOING_URL) instead if every participant should receive the same code or be redirected.
-GENERATE_COMPLETION_CODE = true
-COMPLETION_CODE_MESSAGE = 'Thanks for participating. Your completion code is:'
+STATIC_COMPLETION_CODE = 'example'
+COMPLETION_CODE_MESSAGE = 'Thanks for trying the example. The admin panel password is:'
 # OUTGOING_URL = ''
 
 # Pages shown to the participant, in order.

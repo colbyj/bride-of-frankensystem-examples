@@ -9,16 +9,41 @@
             "text": "Use a textview to display descriptive or informative text between questions."
         },
         {
+            "title":  "Radio Lists",
+            "questiontype": "radiolist",
+            "instructions": "Choose one option.",
+            "id": "radiolist_1",
+            "labels": [
+                "Yes",
+                "Maybe",
+                "No"
+            ]
+        },
+                {
+            "questiontype": "radiolist",
+            "instructions": "Choose one option. Options laid out horizontally.",
+            "id": "radiolist_2",
+            "horizontal": true,
+            "labels": [
+                "Yes",
+                "Maybe",
+                "No"
+            ]
+        },
+        {
+            "title": "Radio Grid",
             "questiontype": "radiogrid",
             "instructions": "Rate how much you agree with each statement.",
             "id": "radio_1",
-            "shuffle": "true",
+            "shuffle": true,
+            "required": true,
+            "question_width": "40%",
             "labels": [
-                "I hate it!",
+                "Strongly Disagree",
                 "",
                 "Neutral",
                 "",
-                "I love it!"
+                "Strongly Agree"
             ],
             "q_text": [
                 {
@@ -36,27 +61,7 @@
             ]
         },
         {
-            "questiontype": "radiolist",
-            "instructions": "Choose one option.",
-            "id": "radiolist_1",
-            "labels": [
-                "Yes",
-                "Maybe",
-                "No"
-            ]
-        },
-                {
-            "questiontype": "radiolist",
-            "instructions": "Choose one option. This is required",
-            "id": "radiolist_2",
-            "required": true,
-            "labels": [
-                "Yes",
-                "Maybe",
-                "No"
-            ]
-        },
-        {
+            "title":  "Check Lists",
             "questiontype": "checklist",
             "instructions": "Choose any options that apply.",
             "id": "checklist_1",
@@ -77,6 +82,28 @@
             ]
         },
         {
+            "questiontype": "checklist",
+            "instructions": "Choose any options that apply. Options laid out horizontally.",
+            "id": "checklist_2",
+            "horizontal": true,
+            "shuffle": true,
+            "questions": [
+                {
+                    "id": "cl_4",
+                    "text": "Option 1"
+                },
+                {
+                    "id": "cl_5",
+                    "text": "Option 2"
+                },
+                {
+                    "id": "cl_6",
+                    "text": "Option 3"
+                }
+            ]
+        },
+        {
+            "title": "Sliders",
             "questiontype": "slider",
             "instructions": "Drag the slider to indicate your response.",
             "id": "slider_1",
@@ -85,6 +112,7 @@
             "tick_count": 5
         },
         {
+            "title":  "Text and number entry",
             "questiontype": "field",
             "instructions": "Enter some text.",
             "placeholder": "Type your answer here",
@@ -111,6 +139,68 @@
             "placeholder": "Type your answer here",
             "instructions": "Enter a longer response.",
             "height": "100"
+        },
+        {
+            "title": "Question Groups (visual grouping)",
+            "questiontype": "group",
+            "id": "demographics",
+            "text": "Tell us a bit about yourself.",
+            "show_sub_labels": true,
+            "instructions": "Sub-questions render with their own labels. Use this to bundle related but independent questions under a shared header.",
+            "questions": [
+                {
+                    "questiontype": "field",
+                    "id": "first_name",
+                    "instructions": "First name",
+                    "placeholder": "First name"
+                },
+                {
+                    "questiontype": "num_field",
+                    "id": "demo_age",
+                    "instructions": "Age",
+                    "min": 0,
+                    "max": 120
+                },
+                {
+                    "questiontype": "drop_down",
+                    "id": "country",
+                    "instructions": "Country",
+                    "items": [
+                        "Canada",
+                        "United Kingdom",
+                        "United States",
+                        "Other"
+                    ]
+                }
+            ]
+        },
+        {
+            "questiontype": "group",
+            "id": "bmi",
+            "show_sub_labels": true,
+            "instructions": "Enter your height and weight",
+            "horizontal": true,
+            "questions": [
+                {
+                    "questiontype": "num_field",
+                    "id": "height",
+                    "instructions": "Height (cm)",
+                    "min": 0,
+                    "max": 120,
+                    "width": 188
+                },
+                {
+                    "questiontype": "num_field",
+                    "id": "weight",
+                    "instructions": "Weight (kg)",
+                    "min": 0,
+                    "max": 120,
+                    "width": 188
+                }
+            ]
         }
-    ]
+    ],
+    "participant_calculations": {
+        "survey_quality": "q1 + q2 + q3"
+    }
 }

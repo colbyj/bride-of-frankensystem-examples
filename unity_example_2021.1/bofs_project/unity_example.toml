@@ -19,12 +19,12 @@ CONDITIONS = [{label='condition 1', enabled=true}, {label='condition 2', enabled
 
 # External ID prompt shown on /external_id (used for Prolific, MTurk, lab-issued IDs, etc.)
 EXTERNAL_ID_LABEL = "Participant ID"
-EXTERNAL_ID_PROMPT = "Please enter the ID provided to you."
+EXTERNAL_ID_PROMPT = "Please enter a participant ID for testing"
 
 # Completion: every participant sees the same static code. Set GENERATE_COMPLETION_CODE = true
 # (or OUTGOING_URL) instead to randomise the code or redirect to an external page.
 STATIC_COMPLETION_CODE = 'example'
-COMPLETION_CODE_MESSAGE = 'Thanks for participating. Your completion code is:'
+COMPLETION_CODE_MESSAGE = 'Thanks for trying the example. The admin panel password is:'
 # OUTGOING_URL = ''
 
 # Pages shown to the participant, in order.

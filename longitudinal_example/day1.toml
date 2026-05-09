@@ -34,11 +34,13 @@ CONDITIONS = [
 # Generic external ID. Replace with whatever your recruitment platform uses
 # (Prolific ID, MTurk Worker ID, etc.) when you adapt this example.
 EXTERNAL_ID_LABEL = "Participant ID"
-EXTERNAL_ID_PROMPT = "Please enter your Participant ID now. You will need to enter the same ID when you return for day 2."
+EXTERNAL_ID_PROMPT = "Please enter a participant ID for testing"
 
-GENERATE_COMPLETION_CODE = false
-STATIC_COMPLETION_CODE = 'DAY1DONE'
-COMPLETION_CODE_MESSAGE = 'Thank you. Your day-1 completion code is:'
+# Completion: every participant sees the same static code. Set GENERATE_COMPLETION_CODE = true
+# (or OUTGOING_URL) instead to randomise the code or redirect to an external page.
+STATIC_COMPLETION_CODE = 'example'
+COMPLETION_CODE_MESSAGE = 'Thanks for trying the example. The admin panel password is:'
+# OUTGOING_URL = ''
 
 # ---------
 # Page List
