@@ -56,22 +56,20 @@ function endRound() {
     const summaryPayload = {round: currentRound, score: score};
 
     // 1) Bulk-POST every click captured this round (list payload).
-    const postClicks = $.ajax({
-        url: '/table/clicks',
+    const postClicks = fetch('/table/clicks', {
         method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(clicksPayload),
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(clicksPayload),
     });
 
     // 2) Single-row POST of the per-round summary.
-    const postScore = $.ajax({
-        url: '/table/scores',
+    const postScore = fetch('/table/scores', {
         method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(summaryPayload),
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(summaryPayload),
     });
 
-    $.when(postClicks, postScore).done(function () {
+    Promise.all([postClicks, postScore]).then(function () {
         if (currentRound >= NUM_ROUNDS) {
             window.location.href = '/redirect_next_page';
         } else {
