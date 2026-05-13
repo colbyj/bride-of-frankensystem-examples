@@ -19,8 +19,8 @@
             ]
         },
         {
-            "questiontype": "picture_select",
-            "instructions": "The <code>picture_select</code> question type uses images as the selectable options themselves. Pick whichever you'd rather look at. This default layout wraps the images in a centered row.",
+            "questiontype": "image_select",
+            "instructions": "The <code>image_select</code> question type uses images as the selectable options themselves. Pick whichever you'd rather look at. This default layout wraps the images in a centered row.",
             "id": "favorite_picture",
             "required": true,
             "images": [
@@ -29,7 +29,7 @@
             ]
         },
         {
-            "questiontype": "picture_select",
+            "questiontype": "image_select",
             "instructions": "Same options with <code>auto_resize: true</code> &mdash; both images render at the same height (the smallest natural height in the group), so the row lines up neatly.",
             "id": "favorite_picture_resized",
             "auto_resize": true,
@@ -39,7 +39,7 @@
             ]
         },
         {
-            "questiontype": "picture_select",
+            "questiontype": "image_select",
             "instructions": "With <code>horizontal: false</code> the images stack in a centered column. <code>auto_resize</code> here matches every image's <em>width</em> to the smallest natural width. (Integer <code>value</code>s are stored as an integer column automatically.)",
             "id": "favorite_picture_vertical",
             "horizontal": false,

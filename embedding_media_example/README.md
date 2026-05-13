@@ -5,7 +5,7 @@ page each:
 
 - **Consent** — image inside a custom HTML template.
 - **Images** — image in `instructions`, in a `textview`, in a `radiogrid`
-  stimulus; `picture_select` (images as options) and `image_click`
+  stimulus; `image_select` (images as options) and `image_click`
   (capturing click coordinates).
 - **Audio** — `audio` question in display-only and force-listen modes,
   plus a plain `<audio controls>` tag for cases where you don't need
