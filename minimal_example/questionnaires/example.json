@@ -201,6 +201,6 @@
         }
     ],
     "participant_calculations": {
-        "survey_quality": "q1 + q2 + q3"
+        "survey_quality": "q_1 + q_2 + q_3"
     }
 }

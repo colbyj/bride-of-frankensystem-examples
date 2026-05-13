@@ -13,13 +13,17 @@ function mousePressed() {
     score += 1;
 }
 
-// Send our score after 5000 seconds
+// Send our score after 5000 milliseconds
 setTimeout(function () {
     let dataToSend = {
         score: score
     };
 
-    $.post("/table/my_task", dataToSend, function () {
-        window.location.href = "/redirect_next_page"
+    fetch("/table/my_task", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(dataToSend)
+    }).then(function () {
+        window.location.href = "/redirect_next_page";
     });
 }, 5000);
