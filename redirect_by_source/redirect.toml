@@ -1,0 +1,32 @@
+# Database
+SQLALCHEMY_DATABASE_URI = 'sqlite:///redirect.db'
+
+# Application
+TITLE = 'Example Project - Redirect By Source'
+ADMIN_PASSWORD = 'example'      # Used to log in to /admin
+PORT = 5001
+USE_BREADCRUMBS = true           # Show a breadcrumb-style progress bar
+RETRIEVE_SESSIONS = true         # Resume a participant's progress if their ID was already used
+ALLOW_RETAKES = true             # If false (and external_id is in use), the same ID cannot be entered twice
+LOG_QUESTIONNAIRE_INTERACTIONS = true  # Log focus/blur/change/paste events on questionnaire inputs (useful for fine-grained timing and authenticity checks)
+
+# Conditions: leave empty for a single condition. Example with two conditions:
+# CONDITIONS = [{label='condition 1', enabled=true}, {label='condition 2', enabled=true}]
+CONDITIONS = []
+
+# Completion: a random code is generated for each participant. Set STATIC_COMPLETION_CODE
+# (or OUTGOING_URL) instead if every participant should receive the same code or be redirected.
+STATIC_COMPLETION_CODE = 'example'
+COMPLETION_CODE_MESSAGE = 'Thanks for trying the example. The admin panel password is:'
+# OUTGOING_URL = ''
+
+# Pages shown to the participant, in order.
+# Append /<tag> to a questionnaire path to include the same questionnaire more than once.
+PAGE_LIST = [
+    {name='Consent', path='consent'},
+    {name='Example Questionnaire 1', path='questionnaire/example_grid', show_if='source=="reddit"'},
+    {name='Example Questionnaire 2', path='questionnaire/example/after', show_if='source=="prolific"'},
+    {name='End 1', path='end/reddit', outgoing_url='https://example.com/a', show_if='source=="reddit"'},
+    {name='End 2', path='end/prolific', outgoing_url='https://example.com/b', show_if='source=="prolific"'},
+    {name='Oops', path='instructions/oops', show_if='source not in ("prolific", "reddit")'}
+]

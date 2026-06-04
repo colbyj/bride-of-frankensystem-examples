@@ -1,0 +1,16 @@
+{
+    "title": "Example Questionnaire",
+    "instructions": "Please answer each question.",
+    "code": "",
+    "questions": [
+        {
+            "title": "Sliders",
+            "question_type": "slider",
+            "instructions": "Drag the slider to indicate your response.",
+            "id": "slider_1",
+            "left": "left",
+            "right": "right",
+            "tick_count": 100
+        }
+    ]
+}
