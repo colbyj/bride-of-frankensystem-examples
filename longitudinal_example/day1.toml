@@ -32,7 +32,7 @@ CONDITIONS = [
 ]
 
 # Generic external ID. Replace with whatever your recruitment platform uses
-# (Prolific ID, MTurk Worker ID, etc.) when you adapt this example.
+# (Prolific ID, lab-issued ID, etc.) when you adapt this example.
 EXTERNAL_ID_LABEL = "Participant ID"
 EXTERNAL_ID_PROMPT = "Please enter a participant ID for testing"
 

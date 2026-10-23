@@ -17,7 +17,7 @@ LOG_QUESTIONNAIRE_INTERACTIONS = false  # Log focus/blur/change/paste events on 
 # Two conditions; the Unity build calls /fetch_condition to discover which one it is in.
 CONDITIONS = [{label='condition 1', enabled=true}, {label='condition 2', enabled=true}]
 
-# External ID prompt shown on /external_id (used for Prolific, MTurk, lab-issued IDs, etc.)
+# External ID prompt shown on /external_id (used for Prolific, lab-issued IDs, etc.)
 EXTERNAL_ID_LABEL = "Participant ID"
 EXTERNAL_ID_PROMPT = "Please enter a participant ID for testing"
 
